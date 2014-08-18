@@ -61,5 +61,6 @@
     <string name="prefs_volume_default">device</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="Rhyanitupdated">Rhyanitupdated</string>
+    <string name="Georgeitupdated">Georgeitupdated</string>
 
 </resources>

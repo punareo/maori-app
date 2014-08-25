@@ -1,19 +1,56 @@
 package punareo.maori_app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.*;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
-public class MainMenuActivity extends Activity {
+public class MainMenuActivity extends Activity
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                Intent i = new Intent(getApplicationContext(), FullImageActivity.class);
+
+                i.putExtra("id", position);
+                startActivity(i);
+            }
+        });
+
+
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          //Options Menu
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

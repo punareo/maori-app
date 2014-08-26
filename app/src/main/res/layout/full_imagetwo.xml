@@ -12,20 +12,14 @@
             android:layout_height="60dp"
             android:background="#000000"
         />
-    <Button
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        />
-    <Button
+
+    <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:text="@string/close"
-            android:textSize="40sp"
+            android:background="@drawable/close"
            />
-
-
 
 
     <ImageView
@@ -45,20 +39,24 @@
         android:layout_alignParentBottom="true"
         android:background="#000000"
         />
-    <Button
+    <ImageButton
+        android:id="@+id/button_close"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/swipeleft"
 
+
         />
-    <Button
+    <ImageButton
+        android:id="@+id/pressright_button"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:textSize="40sp"
+        android:background="@drawable/swiperight"
         />
 
 </RelativeLayout>

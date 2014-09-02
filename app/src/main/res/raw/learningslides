@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<file>
+    <category name="Animal">
+        <object name="Kea">
+            <name type="text">Kea</name>
+            <imgpath type="text">img/kea.jpg</imgpath>
+            <soundpath type="text">sound/kea.wav</soundpath>
+        </object>
+        <object name="Pig">
+            <name type="text">Poeka</name>
+            <imgpath type="text">img/pig.jpg</imgpath>
+            <soundpath type="text">sound/kea.wav</soundpath>
+        </object>
+        <object name="Horse">
+            <name type="text">Hoiho</name>
+            <imgpath type="text">img/horse.jpg</imgpath>
+            <soundpath type="text">sound/horse.wav</soundpath>
+        </object>
+    </category>
+    <category name="Number">
+        <object name="One">
+            <name type="text">Tahi</name>
+            <imgpath type="text">img/tahi.jpg</imgpath>
+            <soundpath type="text">sound/one.wav</soundpath>
+        </object>
+        <object name="Two">
+            <name type="text">Rua</name>
+            <imgpath type="text">img/two.jpg</imgpath>
+            <soundpath type="text">sound/two.wav</soundpath>
+        </object>
+        <object name="Three">
+            <name type="text">Toru</name>
+            <imgpath type="text">img/three.jpg</imgpath>
+            <soundpath type="text">sound/three.wav</soundpath>
+        </object>
+    </category>
+</file>

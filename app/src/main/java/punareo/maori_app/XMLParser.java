@@ -63,7 +63,7 @@ public class XMLParser
                     parser.require(XmlPullParser.START_TAG, ns, "category");
                     while (parser.next() != XmlPullParser.END_TAG)
                     {
-                        if (parser.next() != XmlPullParser.START_TAG)
+                        if (parser.getEventType() != XmlPullParser.START_TAG)
                             continue;
 
                         if (parser.getName().equals("object"))
@@ -72,12 +72,23 @@ public class XMLParser
                             parser.require(XmlPullParser.START_TAG, ns, "object");
                             while (parser.next() != XmlPullParser.END_TAG)
                             {
-                                if (parser.next() != XmlPullParser.START_TAG)
+                                if (parser.getEventType() != XmlPullParser.START_TAG)
                                     continue;
 
+                                String str = parser.getName();
+                                String one = "", two = "", three = "";
+                                if (str.equals("name"))
+                                    if (parser.next() == XmlPullParser.TEXT)
+                                        one = parser.getText();
+                                else if (str.equals("imgpath"))
+                                    if (parser.next() == XmlPullParser.TEXT)
+                                        two = parser.getText();
+                                else if (str.equals("soundpath"))
+                                    if (parser.next() == XmlPullParser.TEXT)
+                                        three = parser.getText();
 
+                                content_object_list.add(new Content_Object(one, two, three));
                             }
-
                         }
                     }
                 }

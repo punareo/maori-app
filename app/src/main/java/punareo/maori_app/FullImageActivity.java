@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.support.v4.view.GestureDetectorCompat;
 
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,7 +39,6 @@ public class FullImageActivity extends Activity
     private GestureDetectorCompat gDetector;
 
     private List<Content_Object> content_object_list;
-
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -59,10 +59,10 @@ public class FullImageActivity extends Activity
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
         imageView.setImageResource(imageAdapter.mThumbIds[position]);
 
-        InputStream in = getResources().openRawResource(R.raw.learningslides);
+        InputStream in =
         try {
             content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Get_List(in, "Animal"));
-        } catch (ParserConfigurationException e) {
+        } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

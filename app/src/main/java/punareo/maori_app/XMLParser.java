@@ -1,5 +1,7 @@
 package punareo.maori_app;
 
+import android.util.Xml;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +18,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Created by 21002282 on 25/08/2014.
@@ -25,7 +29,8 @@ import org.xml.sax.SAXException;
 public class XMLParser
 {
     private static final XMLParser INSTANCE = new XMLParser();
-    List<Content_Object> content_object_list;
+    private ArrayList<Content_Object> content_object_list;
+    private static final String ns = null;
 
     private XMLParser() {};
 
@@ -34,34 +39,50 @@ public class XMLParser
         return INSTANCE;
     }
 
-    public List<Content_Object> Get_List(String filename, String category) throws ParserConfigurationException, IOException, SAXException
+    public List<Content_Object> Get_List(InputStream in, String category) throws XmlPullParserException, IOException, SAXException
     {
-        content_object_list = new ArrayList<Content_Object>();
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(new File(filename));
 
-        //Sets cat_list as a list of all category nodes
-        NodeList cat_list = doc.getDocumentElement().getChildNodes();
-        for (int i = 0; i < cat_list.getLength(); i++)
-        {
-            //Finds category with attribute value matching passed in value
-            if (cat_list.item(i).getAttributes().toString() == "Animal")
+        try {
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(in, null);
+            parser.nextTag();
+
+            //Read File
+            parser.require(XmlPullParser.START_TAG, ns, "file");
+            while (parser.next() != XmlPullParser.END_TAG)
             {
-                //Sets obj_list as a list of all object nodes
-                NodeList obj_list = cat_list.item(i).getChildNodes();
-                for (int j = 0; j < obj_list.getLength(); j++)
-                {
-                    //Sets object as an object inside obj_list
-                    Node object = obj_list.item(j);
-                    Node obj_name = object.getFirstChild();
-                    Node obj_img = obj_name.getNextSibling();
-                    Node obj_snd = obj_img.getNextSibling();
+                if (parser.getEventType() != XmlPullParser.START_TAG)
+                    continue;
+                String name = parser.getName();
+                String cat = parser.getAttributeName(0);
 
-                    content_object_list.add(new Content_Object(obj_name.getTextContent(), obj_img.getTextContent(), obj_snd.getTextContent()));
+                if (name.equals("category") && cat.equals(category))
+                {
+                    //Read Category
+                    parser.require(XmlPullParser.START_TAG, ns, "category");
+                    while (parser.next() != XmlPullParser.END_TAG)
+                    {
+                        if (parser.next() != XmlPullParser.START_TAG)
+                            continue;
+
+                        if (parser.getName().equals("object"))
+                        {
+                            //Read Objects
+                            parser.require(XmlPullParser.START_TAG, ns, "object");
+                            while (parser.next() != XmlPullParser.END_TAG)
+                            {
+                                if (parser.next() != XmlPullParser.START_TAG)
+                                    continue;
+
+
+                            }
+
+                        }
+                    }
                 }
             }
-        }
+        } finally { in.close(); }
         return content_object_list;
     }
 }

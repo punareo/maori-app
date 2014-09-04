@@ -21,6 +21,8 @@ import android.support.v4.view.GestureDetectorCompat;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +40,8 @@ public class FullImageActivity extends Activity
     private List<Content_Object> content_object_list;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_image);
 
@@ -56,17 +59,17 @@ public class FullImageActivity extends Activity
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
         imageView.setImageResource(imageAdapter.mThumbIds[position]);
 
+        InputStream in = getResources().openRawResource(R.raw.learningslides);
         try {
-            content_object_list = XMLParser.Get_Instance().Get_List("learning_slides", "Animal");
+            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Get_List(in, "Animal"));
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace(); }
 
-        gestureText.setText(content_object_list.size());
+       // gestureText.setText(content_object_list.get(0).getName());
     }
 
 
@@ -75,6 +78,7 @@ public class FullImageActivity extends Activity
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+
         this.gDetector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
@@ -88,9 +92,9 @@ public class FullImageActivity extends Activity
     public boolean onFling(MotionEvent event1, MotionEvent event2,
                            float velocityX, float velocityY) {
         if (velocityX < 0)
-           gestureText.setText(content_object_list.get(0).getName());
+           gestureText.setText("Left Swipe");
         else if (velocityX > 0)
-            gestureText.setText(content_object_list.get(1).getName());
+            gestureText.setText("Right Swipe");
         return true;
     }
 

@@ -38,62 +38,58 @@ public class XMLParser
     {
         return INSTANCE;
     }
-
-    public List<Content_Object> Get_List(InputStream in, String category) throws XmlPullParserException, IOException, SAXException
+    //List<Content_Object>
+    public void Parse(InputStream in, String category) throws XmlPullParserException, IOException, SAXException
     {
 
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
-            parser.nextTag();
+
+            int event_type = parser.getEventType();
 
             //Read File
-            parser.require(XmlPullParser.START_TAG, ns, "file");
-            while (parser.next() != XmlPullParser.END_TAG)
+            while (event_type != XmlPullParser.END_DOCUMENT)
             {
-                if (parser.getEventType() != XmlPullParser.START_TAG)
-                    continue;
-                String name = parser.getName();
-                String cat = parser.getAttributeName(0);
-
-                if (name.equals("category") && cat.equals(category))
+                //Find Category
+                if (event_type == XmlPullParser.START_TAG && parser.getName().equals("category") && parser.getAttributeValue(ns, "name").equals(category))
                 {
-                    //Read Category
-                    parser.require(XmlPullParser.START_TAG, ns, "category");
-                    while (parser.next() != XmlPullParser.END_TAG)
+                    //Loop through category
+                    while (event_type != XmlPullParser.END_TAG && parser.getName().equals("category"))
                     {
-                        if (parser.getEventType() != XmlPullParser.START_TAG)
-                            continue;
-
-                        if (parser.getName().equals("object"))
-                        {
-                            //Read Objects
-                            parser.require(XmlPullParser.START_TAG, ns, "object");
-                            while (parser.next() != XmlPullParser.END_TAG)
+                        String name = "", img = "", snd = "";
+                        if (event_type == XmlPullParser.START_TAG && parser.getName().equals("object"))
+                            while (event_type != XmlPullParser.END_TAG && parser.getName().equals("object"))
                             {
-                                if (parser.getEventType() != XmlPullParser.START_TAG)
-                                    continue;
-
-                                String str = parser.getName();
-                                String one = "", two = "", three = "";
-                                if (str.equals("name"))
-                                    if (parser.next() == XmlPullParser.TEXT)
-                                        one = parser.getText();
-                                else if (str.equals("imgpath"))
-                                    if (parser.next() == XmlPullParser.TEXT)
-                                        two = parser.getText();
-                                else if (str.equals("soundpath"))
-                                    if (parser.next() == XmlPullParser.TEXT)
-                                        three = parser.getText();
-
-                                content_object_list.add(new Content_Object(one, two, three));
+                                if (event_type == XmlPullParser.START_TAG && parser.getName().equals("name"))
+                                {
+                                    event_type = parser.next();
+                                    if (event_type == XmlPullParser.TEXT)
+                                         name = parser.getText();
+                                }
+                                else if (event_type == XmlPullParser.START_TAG && parser.getName().equals("imgpath"))
+                                {
+                                    event_type = parser.next();
+                                    if (event_type == XmlPullParser.TEXT)
+                                        img = parser.getText();
+                                }
+                                else if (event_type == XmlPullParser.START_TAG && parser.getName().equals("soundpath"))
+                                {
+                                    event_type = parser.next();
+                                    if (event_type == XmlPullParser.TEXT)
+                                        snd = parser.getText();
+                                }
+                                event_type = parser.next();
                             }
-                        }
+                        System.out.println(name + " " + img + " " + snd);
+                        event_type = parser.next();
                     }
                 }
+                System.out.println(event_type);
+                event_type = parser.next();
             }
         } finally { in.close(); }
-        return content_object_list;
+        //return content_object_list;
     }
 }

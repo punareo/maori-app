@@ -59,20 +59,23 @@ public class FullImageActivity extends Activity
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
         imageView.setImageResource(imageAdapter.mThumbIds[position]);
 
-        InputStream in =
+        InputStream in = getResources().openRawResource(R.raw.learningslides);
         try {
-            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Get_List(in, "Animal"));
+           // content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Get_List(in, "Animal"));
+            XMLParser.Get_Instance().Parse(in, "Animal");
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace(); }
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
 
        // gestureText.setText(content_object_list.get(0).getName());
     }
-
-
 
     //Required Gesture Detection Methods
     @Override

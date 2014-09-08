@@ -4,24 +4,24 @@
         <object name="Kea">
             <name type="text">Kea</name>
             <imgpath type="text">drawable/animal</imgpath>
-            <soundpath type="text">drawable/bodypart</soundpath>
+            <soundpath type="text">raw/ratspawn</soundpath>
         </object>
         <object name="Pig">
             <name type="text">Poeka</name>
-            <imgpath type="text">img/pig.jpg</imgpath>
-            <soundpath type="text">sound/kea.wav</soundpath>
+            <imgpath type="text">drawable/colour</imgpath>
+            <soundpath type="text">raw/ratmove</soundpath>
         </object>
         <object name="Horse">
             <name type="text">Hoiho</name>
-            <imgpath type="text">img/horse.jpg</imgpath>
-            <soundpath type="text">sound/horse.wav</soundpath>
+            <imgpath type="text">drawable/number</imgpath>
+            <soundpath type="text">raw/ratbat</soundpath>
         </object>
     </category>
     <category name="Number">
         <object name="One">
             <name type="text">Tahi</name>
             <imgpath type="text">img/tahi.jpg</imgpath>
-            <soundpath type="text">sound/one.wav</soundpath>
+            <soundpath type="text">raw/one.wav</soundpath>
         </object>
         <object name="Two">
             <name type="text">Rua</name>

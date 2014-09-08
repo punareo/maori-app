@@ -41,7 +41,7 @@ public class Content_Object
 
     public void Set_Snd_ID(String snd)
     {
-        this.snd_id = c.getResources().getIdentifier(snd, "sound", c.getPackageName());
+        this.snd_id = c.getResources().getIdentifier(snd, null, c.getPackageName());
     }
 
     public int Get_Snd_ID()

@@ -1,5 +1,6 @@
 package punareo.maori_app;
 
+import android.content.Context;
 import android.util.Xml;
 
 import java.io.File;
@@ -29,7 +30,7 @@ import org.xmlpull.v1.XmlPullParserException;
 public class XMLParser
 {
     private static final XMLParser INSTANCE = new XMLParser();
-    private ArrayList<Content_Object> content_object_list;
+    private ArrayList<Content_Object> content_object_list = new ArrayList<Content_Object>();
     private static final String ns = null;
 
     private XMLParser() {};
@@ -38,58 +39,87 @@ public class XMLParser
     {
         return INSTANCE;
     }
-    //List<Content_Object>
-    public void Parse(InputStream in, String category) throws XmlPullParserException, IOException, SAXException
-    {
 
+    public List<Content_Object> Parse(Context c, InputStream in, String category) throws XmlPullParserException, IOException, SAXException
+    {
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
+            parser.next();
 
-            int event_type = parser.getEventType();
-
-            //Read File
-            while (event_type != XmlPullParser.END_DOCUMENT)
+            parser.require(XmlPullParser.START_TAG, ns, "file");
+            while (parser.next() != XmlPullParser.END_TAG)
             {
-                //Find Category
-                if (event_type == XmlPullParser.START_TAG && parser.getName().equals("category") && parser.getAttributeValue(ns, "name").equals(category))
+                if (parser.getEventType() != XmlPullParser.START_TAG)
+                    continue;
+
+                if (parser.getEventType() == XmlPullParser.START_TAG && parser.getName().equals("category") && parser.getAttributeValue(ns, "name").equals(category))
                 {
-                    //Loop through category
-                    while (event_type != XmlPullParser.END_TAG && parser.getName().equals("category"))
+                    while (parser.next() != XmlPullParser.END_TAG)
                     {
-                        String name = "", img = "", snd = "";
-                        if (event_type == XmlPullParser.START_TAG && parser.getName().equals("object"))
-                            while (event_type != XmlPullParser.END_TAG && parser.getName().equals("object"))
-                            {
-                                if (event_type == XmlPullParser.START_TAG && parser.getName().equals("name"))
-                                {
-                                    event_type = parser.next();
-                                    if (event_type == XmlPullParser.TEXT)
-                                         name = parser.getText();
-                                }
-                                else if (event_type == XmlPullParser.START_TAG && parser.getName().equals("imgpath"))
-                                {
-                                    event_type = parser.next();
-                                    if (event_type == XmlPullParser.TEXT)
-                                        img = parser.getText();
-                                }
-                                else if (event_type == XmlPullParser.START_TAG && parser.getName().equals("soundpath"))
-                                {
-                                    event_type = parser.next();
-                                    if (event_type == XmlPullParser.TEXT)
-                                        snd = parser.getText();
-                                }
-                                event_type = parser.next();
-                            }
-                        System.out.println(name + " " + img + " " + snd);
-                        event_type = parser.next();
+                        if (parser.getEventType() != XmlPullParser.START_TAG)
+                            continue;
+
+                        content_object_list.add(Read_Object(c, parser));
                     }
                 }
-                System.out.println(event_type);
-                event_type = parser.next();
+                else Skip(parser);
             }
         } finally { in.close(); }
-        //return content_object_list;
+        return content_object_list;
+    }
+
+    private Content_Object Read_Object(Context c, XmlPullParser parser) throws XmlPullParserException, IOException, SAXException
+    {
+        try {
+            String name = "", img = "", snd = "";
+            while (parser.next() != XmlPullParser.END_TAG)
+            {
+                if (parser.getEventType() != XmlPullParser.START_TAG)
+                    continue;
+
+                String tag_name = parser.getName();
+                if (tag_name.equals("name"))
+                    name = Read_Text(parser, "name");
+                else if (tag_name.equals("imgpath"))
+                    img = Read_Text(parser, "imgpath");
+                else if (tag_name.equals("soundpath"))
+                    snd = Read_Text(parser, "soundpath");
+            }
+            return new Content_Object(c, name, img, snd);
+        } finally {}
+    }
+
+    private String Read_Text(XmlPullParser parser, String tag_name) throws XmlPullParserException, IOException, SAXException
+    {
+        String result = "";
+
+        parser.require(XmlPullParser.START_TAG, ns, tag_name);
+
+        if (parser.next() == XmlPullParser.TEXT)
+            result = parser.getText();
+        parser.nextTag();
+        System.out.println(result);
+        parser.require(XmlPullParser.END_TAG, ns, tag_name);
+
+        return result;
+    }
+
+    private void Skip(XmlPullParser parser) throws XmlPullParserException, IOException {
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            throw new IllegalStateException();
+        }
+        int depth = 1;
+        while (depth != 0) {
+            switch (parser.next()) {
+                case XmlPullParser.END_TAG:
+                    depth--;
+                    break;
+                case XmlPullParser.START_TAG:
+                    depth++;
+                    break;
+            }
+        }
     }
 }

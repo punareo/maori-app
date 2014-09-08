@@ -3,8 +3,8 @@
     <category name="Animal">
         <object name="Kea">
             <name type="text">Kea</name>
-            <imgpath type="text">img/kea.jpg</imgpath>
-            <soundpath type="text">sound/kea.wav</soundpath>
+            <imgpath type="text">drawable/animal</imgpath>
+            <soundpath type="text">drawable/bodypart</soundpath>
         </object>
         <object name="Pig">
             <name type="text">Poeka</name>

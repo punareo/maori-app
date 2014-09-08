@@ -7,16 +7,11 @@ package punareo.maori_app;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.GestureDetector;
-import android.widget.TextView;
-import android.view.MotionEvent;
-import android.os.Bundle;
-import android.view.GestureDetector;
-import android.widget.ImageView;
 import android.support.v4.view.GestureDetectorCompat;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
@@ -24,12 +19,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
-import javax.xml.parsers.ParserConfigurationException;
 
 public class FullImageActivity extends Activity
     implements GestureDetector.OnGestureListener,
@@ -45,7 +35,7 @@ public class FullImageActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_image);
 
-        gestureText = (TextView)findViewById(R.id.gestureStatusText);
+        gestureText = (TextView)findViewById(R.id.imageView_header_main);
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
 
@@ -59,19 +49,18 @@ public class FullImageActivity extends Activity
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
         InputStream in = getResources().openRawResource(R.raw.learningslides);
         try {
-           content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, "Animal"));
+            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, "Animal"));
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace(); }
 
-        imageView.setImageResource(content_object_list.get(0).Get_Img_ID());
+       imageView.setImageResource(content_object_list.get(0).Get_Img_ID());
     }
+
+
 
     //Required Gesture Detection Methods
     @Override

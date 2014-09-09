@@ -8,17 +8,44 @@ import android.widget.*;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
+class Menu_Option
+{
+    private String category;
+    private int id;
+
+    public Menu_Option(String category, int id)
+    {
+        this.category = category;
+        this.id = id;
+    }
+
+    public String Get_Cat() { return category; }
+    public int Get_ID() { return id; }
+}
+
 public class MainMenuActivity extends Activity
 {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        final ArrayList<Menu_Option> menu_options = new ArrayList<Menu_Option>()
+        {{
+                add(new Menu_Option("Animals", R.drawable.animal));
+                add(new Menu_Option("Numbers", R.drawable.number));
+                add(new Menu_Option("Shapes", R.drawable.shape));
+                add(new Menu_Option("Letters", R.drawable.letter));
+                add(new Menu_Option("Colours", R.drawable.colour));
+                add(new Menu_Option("Body parts", R.drawable.bodypart));
+        }};
 
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
-        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setAdapter(new ImageAdapter(this, menu_options));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -27,12 +54,10 @@ public class MainMenuActivity extends Activity
             {
                 Intent i = new Intent(getApplicationContext(), FullImageActivity.class);
 
-                i.putExtra("id", position);
+                i.putExtra("Category", menu_options.get(position).Get_Cat());
                 startActivity(i);
             }
         });
-
-
     }
 
 

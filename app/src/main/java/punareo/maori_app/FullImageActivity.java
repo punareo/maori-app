@@ -26,43 +26,46 @@ public class FullImageActivity extends Activity
     implements GestureDetector.OnGestureListener,
                 GestureDetector.OnDoubleTapListener
     {
-
-    private MediaPlayer player;
     private TextView text;
     private GestureDetectorCompat gDetector;
-    private int index = 0;
     private ImageView imageView;
+
+    private int index = 0;
     private List<Content_Object> content_object_list;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_image);
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
 
-        // get intent data
-        Intent i = getIntent();
+        String category = "";
+        if (savedInstanceState == null)
+        {
+            Bundle extra = getIntent().getExtras();
+            if (extra == null)
+                category = null;
+            else
+                category = extra.getString("Category");
+        }
+        else
+            category = (String) savedInstanceState.getSerializable("Category");
 
-         imageView = (ImageView) findViewById(R.id.full_image_view);
+        imageView = (ImageView) findViewById(R.id.full_image_view);
         text = (TextView) findViewById(R.id.imageView_header_main);
-        InputStream in = getResources().openRawResource(R.raw.learningslides);
         try {
-            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, "Animal"));
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace(); }
-
-       Change_View(0);
+            InputStream in = getResources().openRawResource(R.raw.learningslides);
+            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, category));
+        }
+        catch (XmlPullParserException e) { e.printStackTrace(); }
+        catch (IOException e) { e.printStackTrace(); }
+        catch (SAXException e) { e.printStackTrace(); }
+        Change_View(0);
     }
 
     public void Change_View(int increment)
     {
-
         index += increment;
         if (index > content_object_list.size() - 1)
             index = 0;
@@ -71,13 +74,8 @@ public class FullImageActivity extends Activity
 
         text.setText(content_object_list.get(index).getName());
         imageView.setImageResource(content_object_list.get(index).Get_Img_ID());
-        player = MediaPlayer.create(this, content_object_list.get(index).Get_Snd_ID());
-        if (player.isPlaying())
-        {
-            player.stop();
-            player.start();
-        }
-
+        try { content_object_list.get(index).Play_Sound(); }
+            catch (IOException e) { e.printStackTrace(); }
     }
 
     //Required Gesture Detection Methods

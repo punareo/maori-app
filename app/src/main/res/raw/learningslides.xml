@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <file>
-    <category name="Animal">
+    <category name="Animals">
         <object name="Kea">
             <name type="text">Kea</name>
             <imgpath type="text">drawable/animal</imgpath>
@@ -17,21 +17,21 @@
             <soundpath type="text">raw/ratbat</soundpath>
         </object>
     </category>
-    <category name="Number">
+    <category name="Numbers">
         <object name="One">
             <name type="text">Tahi</name>
-            <imgpath type="text">img/tahi.jpg</imgpath>
-            <soundpath type="text">raw/one.wav</soundpath>
+            <imgpath type="text">drawable/bodypart</imgpath>
+            <soundpath type="text">raw/birddeath</soundpath>
         </object>
         <object name="Two">
             <name type="text">Rua</name>
-            <imgpath type="text">img/two.jpg</imgpath>
-            <soundpath type="text">sound/two.wav</soundpath>
+            <imgpath type="text">drawable/letter</imgpath>
+            <soundpath type="text">raw/birdlh</soundpath>
         </object>
         <object name="Three">
             <name type="text">Toru</name>
-            <imgpath type="text">img/three.jpg</imgpath>
-            <soundpath type="text">sound/three.wav</soundpath>
+            <imgpath type="text">drawable/shape</imgpath>
+            <soundpath type="text">raw/birdlaugh</soundpath>
         </object>
     </category>
 </file>

@@ -12,32 +12,28 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
-
-    // references to our images
-    public Integer[] mThumbIds = {
-            R.drawable.animal, R.drawable.bodypart,
-            R.drawable.colour, R.drawable.letter,
-            R.drawable.number, R.drawable.shape,
-
-    };
+    ArrayList<Menu_Option> menu_options;
     //Constructor
-    public ImageAdapter(Context c)
+    public ImageAdapter(Context c, ArrayList<Menu_Option> menu_options)
     {
+        this.menu_options = new ArrayList<Menu_Option>(menu_options);
         mContext = c;
     }
 
     @Override
     public int getCount()
     {
-        return mThumbIds.length;
+        return menu_options.size();
     }
     @Override
-    public Object getItem(int position)
+    public Menu_Option getItem(int position)
     {
-        return mThumbIds[position];
+        return menu_options.get(position);
     }
 
     public long getItemId(int position)
@@ -57,15 +53,9 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setPadding(8, 8, 8, 8);
         }
         else
-        {
             imageView = (ImageView) convertView;
-        }
 
-        imageView.setImageResource(mThumbIds[position]);
+        imageView.setImageResource(getItem(position).Get_ID());
         return imageView;
-
     }
-
-
-
 }

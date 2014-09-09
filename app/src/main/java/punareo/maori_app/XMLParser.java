@@ -30,7 +30,7 @@ import org.xmlpull.v1.XmlPullParserException;
 public class XMLParser
 {
     private static final XMLParser INSTANCE = new XMLParser();
-    private ArrayList<Content_Object> content_object_list = new ArrayList<Content_Object>();
+    private ArrayList<Content_Object> content_object_list;
     private static final String ns = null;
 
     private XMLParser() {};
@@ -43,6 +43,7 @@ public class XMLParser
     public List<Content_Object> Parse(Context c, InputStream in, String category) throws XmlPullParserException, IOException, SAXException
     {
         try {
+            content_object_list = new ArrayList<Content_Object>();
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
@@ -54,7 +55,8 @@ public class XMLParser
                 if (parser.getEventType() != XmlPullParser.START_TAG)
                     continue;
 
-                if (parser.getEventType() == XmlPullParser.START_TAG && parser.getName().equals("category") && parser.getAttributeValue(ns, "name").equals(category))
+                if (parser.getEventType() == XmlPullParser.START_TAG && parser.getName().equals("category")
+                                                    && parser.getAttributeValue(ns, "name").equals(category))
                 {
                     while (parser.next() != XmlPullParser.END_TAG)
                     {
@@ -68,6 +70,11 @@ public class XMLParser
             }
         } finally { in.close(); }
         return content_object_list;
+    }
+
+    public int Get_Size()
+    {
+        return content_object_list.size();
     }
 
     private Content_Object Read_Object(Context c, XmlPullParser parser) throws XmlPullParserException, IOException, SAXException

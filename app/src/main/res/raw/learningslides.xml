@@ -3,17 +3,17 @@
     <category name="Animals">
         <object name="Kea">
             <name type="text">Kea</name>
-            <imgpath type="text">drawable/animal</imgpath>
+            <imgpath type="text">drawable/two</imgpath>
             <soundpath type="text">raw/ratspawn</soundpath>
         </object>
         <object name="Pig">
             <name type="text">Poeka</name>
-            <imgpath type="text">drawable/colour</imgpath>
+            <imgpath type="text">drawable/one</imgpath>
             <soundpath type="text">raw/ratmove</soundpath>
         </object>
         <object name="Horse">
             <name type="text">Hoiho</name>
-            <imgpath type="text">drawable/number</imgpath>
+            <imgpath type="text">drawable/eight</imgpath>
             <soundpath type="text">raw/ratbat</soundpath>
         </object>
     </category>

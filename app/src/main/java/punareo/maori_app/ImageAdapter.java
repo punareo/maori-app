@@ -19,9 +19,8 @@ public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     ArrayList<Menu_Option> menu_options;
     //Constructor
-    public ImageAdapter(Context c, ArrayList<Menu_Option> menu_options)
+    public ImageAdapter(Context c)
     {
-        this.menu_options = new ArrayList<Menu_Option>(menu_options);
         mContext = c;
     }
 
@@ -31,7 +30,7 @@ public class ImageAdapter extends BaseAdapter {
         return menu_options.size();
     }
     @Override
-    public Menu_Option getItem(int position)
+    public Object getItem(int position)
     {
         return menu_options.get(position);
     }
@@ -53,9 +52,15 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setPadding(8, 8, 8, 8);
         }
         else
+        {
             imageView = (ImageView) convertView;
+        }
 
         imageView.setImageResource(getItem(position).Get_ID());
         return imageView;
+
     }
+
+
+
 }

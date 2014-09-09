@@ -10,7 +10,7 @@
     tools:context=".MyActivity">
 
 
-                  <!-- Header TextView (Displays the Application Title) -->
+                  <!-- Header(imageView_header_main)Displays the Application Title -->
     <TextView
         android:id="@+id/imageView_header_main"
         android:layout_width="fill_parent"
@@ -23,14 +23,14 @@
         android:textAllCaps="true"
         />
 
-                     <!-- GridView to display category images -->
+                     <!-- GridView(gridview_main)to display category images -->
 
     <GridView
         android:id="@+id/gridview_main"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:columnWidth="90dp"
-        android:numColumns="3"
+        android:numColumns="2"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
@@ -38,7 +38,7 @@
         android:layout_centerInParent="true"/>
 
 
-                         <!--footer -->
+                         <!--(imageView_main_Footer)footer Displays Information-->
     <TextView
         android:id="@+id/imageView_main_Footer"
         android:layout_width="fill_parent"

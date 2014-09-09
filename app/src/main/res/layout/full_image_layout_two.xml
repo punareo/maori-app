@@ -33,12 +33,12 @@
         android:background="#000000"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/imageView_header_fullmain"
-        android:layout_above="@id/imageView_footer_fullmain" />
+        android:layout_above="@id/imageView_footer_main" />
 
     <!--footer(imageView_footer_main) Displays Information-->
 
     <ImageView
-        android:id="@+id/imageView_footer_fullmain"
+        android:id="@+id/imageView_footer_main"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

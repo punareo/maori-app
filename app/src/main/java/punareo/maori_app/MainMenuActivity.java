@@ -31,7 +31,17 @@ public class MainMenuActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+
+        int layout = R.layout.activity_main_menu;
+        if (savedInstanceState == null)
+        {
+            Bundle extra = getIntent().getExtras();
+            if (extra != null)
+                layout = extra.getInt("Layout");
+        }
+        else
+            layout = savedInstanceState.getInt("Layout");
+        setContentView(layout);
 
         final ArrayList<Menu_Option> menu_options = new ArrayList<Menu_Option>()
         {{

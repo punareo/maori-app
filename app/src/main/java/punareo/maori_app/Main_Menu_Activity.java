@@ -3,6 +3,7 @@ package punareo.maori_app;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import android.view.Menu;
@@ -25,14 +26,14 @@ class Menu_Option
     public int Get_ID() { return id; }
 }
 
-public class MainMenuActivity extends Activity
+public class Main_Menu_Activity extends Activity
 {
-
+    private int img_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        int layout = R.layout.activity_main_menu;
+        int layout = R.layout.activity_main_menu_layout_one;
         if (savedInstanceState == null)
         {
             Bundle extra = getIntent().getExtras();
@@ -54,15 +55,27 @@ public class MainMenuActivity extends Activity
         }};
 
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
-        gridview.setAdapter(new ImageAdapter(this, menu_options));
+        gridview.setAdapter(new Image_Adapter(this, menu_options));
+
+        switch (layout)
+        {
+            case R.layout.activity_main_menu_layout_one :
+                img_layout = R.layout.full_image_layout_one;
+            case R.layout.activity_main_menu_layout_two :
+                img_layout = R.layout.full_image_layout_two;
+            case R.layout.activity_main_menu_layout_three :
+                img_layout = R.layout.full_image_layout_three;
+            default:
+                img_layout = R.layout.full_image_layout_one;
+        }
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent i = new Intent(getApplicationContext(), FullImageActivity.class);
-
+                Intent i = new Intent(getApplicationContext(), Full_Image_Activity.class);
+                i.putExtra("Layout", img_layout);
                 i.putExtra("Category", menu_options.get(position).Get_Cat());
                 startActivity(i);
             }

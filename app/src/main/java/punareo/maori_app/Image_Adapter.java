@@ -14,11 +14,11 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 
-public class ImageAdapter extends BaseAdapter {
+public class Image_Adapter extends BaseAdapter {
     private Context mContext;
     ArrayList<Menu_Option> menu_options;
     //Constructor
-    public ImageAdapter(Context c, ArrayList<Menu_Option> menu_options)
+    public Image_Adapter(Context c, ArrayList<Menu_Option> menu_options)
     {
         this.menu_options = menu_options;
         mContext = c;

@@ -3,21 +3,11 @@ package punareo.maori_app;
 import android.content.Context;
 import android.util.Xml;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -27,15 +17,15 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 
 
-public class XMLParser
+public class XML_Parser
 {
-    private static final XMLParser INSTANCE = new XMLParser();
+    private static final XML_Parser INSTANCE = new XML_Parser();
     private ArrayList<Content_Object> content_object_list;
     private static final String ns = null;
 
-    private XMLParser() {};
+    private XML_Parser() {};
 
-    public static XMLParser Get_Instance()
+    public static XML_Parser Get_Instance()
     {
         return INSTANCE;
     }

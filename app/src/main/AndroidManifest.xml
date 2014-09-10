@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DesignMenu"
+            android:name=".Design_Menu"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenuActivity">
+        <activity android:name=".Main_Menu_Activity">
 
         </activity>
-        <activity android:name=".FullImageActivity">
+        <activity android:name=".Full_Image_Activity">
 
         </activity>
     </application>

@@ -35,7 +35,7 @@
             android:layout_below="@+id/imageView_header_main"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_above="@+id/imageView_footer_main" />
+            android:layout_above="@+id/text_view_footer_main" />
 
         <!-- When gridview_main Image clicked, (imageView_preview) will display  preview image-->
     <ImageView
@@ -47,7 +47,7 @@
 
                             <!--footer(imageView_footer_main) Displays Information-->
     <TextView
-        android:id="@+id/imageView_footer_main"
+        android:id="@+id/text_view_footer_main"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

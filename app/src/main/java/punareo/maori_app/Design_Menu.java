@@ -9,7 +9,7 @@ import android.widget.Button;
 /**
  * Created by 2002917 on 9/09/2014.
  */
-public class DesignMenu extends Activity {
+public class Design_Menu extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +25,8 @@ public class DesignMenu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
-                i.putExtra("Layout", R.layout.activity_main_menu);
+                Intent i = new Intent(getApplicationContext(), Main_Menu_Activity.class);
+                i.putExtra("Layout", R.layout.activity_main_menu_layout_one);
                 startActivity(i);
             }
         });
@@ -35,7 +35,7 @@ public class DesignMenu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                Intent i = new Intent(getApplicationContext(), Main_Menu_Activity.class);
                 i.putExtra("Layout", R.layout.activity_main_menu_layout_two);
                 startActivity(i);
             }
@@ -45,7 +45,7 @@ public class DesignMenu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+                Intent i = new Intent(getApplicationContext(), Main_Menu_Activity.class);
                 i.putExtra("Layout", R.layout.activity_main_menu_layout_three);
                 startActivity(i);
             }

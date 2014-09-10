@@ -5,8 +5,6 @@ package punareo.maori_app;
  */
 
 import android.app.Activity;
-import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
@@ -22,13 +20,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FullImageActivity extends Activity
+public class Full_Image_Activity extends Activity
     implements GestureDetector.OnGestureListener,
                 GestureDetector.OnDoubleTapListener
     {
-    private TextView text;
+    private TextView text_view;
     private GestureDetectorCompat gDetector;
-    private ImageView imageView;
+    private ImageView image_view;
 
     private int index = 0;
     private List<Content_Object> content_object_list;
@@ -36,7 +34,17 @@ public class FullImageActivity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.full_image);
+        int img_layout = R.layout.full_image_layout_one;
+        if (savedInstanceState == null)
+        {
+            Bundle extra = getIntent().getExtras();
+            if (extra != null)
+                img_layout = extra.getInt("Layout");
+        }
+        else
+            img_layout = savedInstanceState.getInt("Layout");
+        setContentView(img_layout);
+
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
 
@@ -52,16 +60,17 @@ public class FullImageActivity extends Activity
         else
             category = (String) savedInstanceState.getSerializable("Category");
 
-        imageView = (ImageView) findViewById(R.id.full_image_view);
-        text = (TextView) findViewById(R.id.imageView_header_main);
+        image_view = (ImageView) findViewById(R.id.full_image_view);
+        text_view = (TextView) findViewById(R.id.text_view_header_main);
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
-            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, category));
+            content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
+            Change_View(0);
         }
         catch (XmlPullParserException e) { e.printStackTrace(); }
         catch (IOException e) { e.printStackTrace(); }
         catch (SAXException e) { e.printStackTrace(); }
-        Change_View(0);
+
     }
 
     public void Change_View(int increment)
@@ -72,8 +81,8 @@ public class FullImageActivity extends Activity
         else if (index < 0)
             index = content_object_list.size() - 1;
 
-        text.setText(content_object_list.get(index).getName());
-        imageView.setImageResource(content_object_list.get(index).Get_Img_ID());
+        text_view.setText(content_object_list.get(index).getName());
+        image_view.setImageResource(content_object_list.get(index).Get_Img_ID());
         try { content_object_list.get(index).Play_Sound(); }
             catch (IOException e) { e.printStackTrace(); }
     }

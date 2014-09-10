@@ -61,10 +61,13 @@ public class Main_Menu_Activity extends Activity
         {
             case R.layout.activity_main_menu_layout_one :
                 img_layout = R.layout.full_image_layout_one;
+                break;
             case R.layout.activity_main_menu_layout_two :
                 img_layout = R.layout.full_image_layout_two;
+                break;
             case R.layout.activity_main_menu_layout_three :
                 img_layout = R.layout.full_image_layout_three;
+                break;
             default:
                 img_layout = R.layout.full_image_layout_one;
         }

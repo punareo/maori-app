@@ -28,7 +28,9 @@
         <GridView
             android:id="@+id/gridview_main"
             android:layout_width="wrap_content"
-            android:layout_height="225dp"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/imageView_main_Footer"
+            android:layout_below="@id/imageView_header_main"
             android:numColumns="1"
             android:layout_marginLeft="25dp"
             android:verticalSpacing="10dp"

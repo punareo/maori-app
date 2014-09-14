@@ -2,9 +2,9 @@
 <file>
     <category name="Animals">
         <object name="Kea">
-            <name type="text">Kea</name>
-            <imgpath type="text">drawable/two</imgpath>
-            <soundpath type="text">raw/ratspawn</soundpath>
+            <name type="text">Aporo</name>
+            <imgpath type="text">drawable/apple</imgpath>
+            <soundpath type="text">raw/asound</soundpath>
         </object>
         <object name="Pig">
             <name type="text">Poeka</name>
@@ -16,22 +16,79 @@
             <imgpath type="text">drawable/eight</imgpath>
             <soundpath type="text">raw/ratbat</soundpath>
         </object>
+        <object name="cow">
+            <name type="text">Wha</name>
+            <imgpath type="text">drawable/four</imgpath>
+            <soundpath type="text">raw/ratbat</soundpath>
+        </object>
     </category>
     <category name="Numbers">
         <object name="One">
             <name type="text">Tahi</name>
-            <imgpath type="text">drawable/bodypart</imgpath>
-            <soundpath type="text">raw/birddeath</soundpath>
+            <imgpath type="text">drawable/one</imgpath>
+            <soundpath type="text">raw/one</soundpath>
         </object>
         <object name="Two">
             <name type="text">Rua</name>
-            <imgpath type="text">drawable/letter</imgpath>
-            <soundpath type="text">raw/birdlh</soundpath>
+            <imgpath type="text">drawable/two</imgpath>
+            <soundpath type="text">raw/two</soundpath>
         </object>
         <object name="Three">
             <name type="text">Toru</name>
-            <imgpath type="text">drawable/shape</imgpath>
-            <soundpath type="text">raw/birdlaugh</soundpath>
+            <imgpath type="text">drawable/three</imgpath>
+            <soundpath type="text">raw/three</soundpath>
+        </object>
+        <object name="Four">
+            <name type="text">Wha</name>
+            <imgpath type="text">drawable/four</imgpath>
+            <soundpath type="text">raw/four</soundpath>
+        </object>
+        <object name="Five">
+            <name type="text">Rima</name>
+            <imgpath type="text">drawable/five</imgpath>
+            <soundpath type="text">raw/five</soundpath>
+        </object>
+        <object name="six">
+            <name type="text">Ono</name>
+            <imgpath type="text">drawable/six</imgpath>
+            <soundpath type="text">raw/six</soundpath>
+        </object>
+        <object name="Seven">
+            <name type="text">Whitu</name>
+            <imgpath type="text">drawable/seven</imgpath>
+            <soundpath type="text">raw/seven</soundpath>
+        </object>
+        <object name="Eight">
+            <name type="text">Waru</name>
+            <imgpath type="text">drawable/eight</imgpath>
+            <soundpath type="text">raw/eight</soundpath>
+        </object>
+        <object name="Nine">
+            <name type="text">Iwa</name>
+            <imgpath type="text">drawable/nine</imgpath>
+            <soundpath type="text">raw/nine</soundpath>
+        </object>
+    </category>
+    <category name="Shapes">
+        <object name="Kea">
+            <name type="text">Aporo</name>
+            <imgpath type="text">drawable/apple</imgpath>
+            <soundpath type="text">raw/asound</soundpath>
+        </object>
+        <object name="Pig">
+            <name type="text">Poeka</name>
+            <imgpath type="text">drawable/one</imgpath>
+            <soundpath type="text">raw/ratmove</soundpath>
+        </object>
+        <object name="Horse">
+            <name type="text">Hoiho</name>
+            <imgpath type="text">drawable/eight</imgpath>
+            <soundpath type="text">raw/ratbat</soundpath>
+        </object>
+        <object name="cow">
+            <name type="text">Wha</name>
+            <imgpath type="text">drawable/four</imgpath>
+            <soundpath type="text">raw/ratbat</soundpath>
         </object>
     </category>
 </file>

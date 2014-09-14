@@ -2,14 +2,18 @@ package punareo.maori_app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.*;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+
+
 
 class Menu_Option
 {
@@ -26,14 +30,19 @@ class Menu_Option
     public int Get_ID() { return id; }
 }
 
+
 public class Main_Menu_Activity extends Activity
 {
+    private TextView textView_header;
+    private TextView textView_footer;
     private int img_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         int layout = R.layout.activity_main_menu_layout_one;
+
+
+
         if (savedInstanceState == null)
         {
             Bundle extra = getIntent().getExtras();
@@ -72,6 +81,8 @@ public class Main_Menu_Activity extends Activity
                 img_layout = R.layout.full_image_layout_one;
         }
 
+
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -81,8 +92,17 @@ public class Main_Menu_Activity extends Activity
                 i.putExtra("Layout", img_layout);
                 i.putExtra("Category", menu_options.get(position).Get_Cat());
                 startActivity(i);
+
             }
         });
+        textView_footer =(TextView) findViewById(R.id.imageView_main_Footer);
+        textView_header =(TextView) findViewById(R.id.imageView_header_main);
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+
+        textView_header.setTypeface(typeface);
+        textView_footer.setTypeface(typeface);
+
+
     }
 
 

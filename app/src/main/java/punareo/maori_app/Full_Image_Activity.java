@@ -5,6 +5,7 @@ package punareo.maori_app;
  */
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
@@ -25,15 +26,18 @@ public class Full_Image_Activity extends Activity
                 GestureDetector.OnDoubleTapListener
     {
     private TextView text_view;
+    private TextView textView_footer;
     private GestureDetectorCompat gDetector;
     private ImageView image_view;
-
     private int index = 0;
     private List<Content_Object> content_object_list;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         int img_layout = R.layout.full_image_layout_one;
         if (savedInstanceState == null)
         {
@@ -47,7 +51,6 @@ public class Full_Image_Activity extends Activity
 
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
-
         String category = "";
         if (savedInstanceState == null)
         {
@@ -60,8 +63,20 @@ public class Full_Image_Activity extends Activity
         else
             category = (String) savedInstanceState.getSerializable("Category");
 
+
         image_view = (ImageView) findViewById(R.id.full_image_view);
         text_view = (TextView) findViewById(R.id.text_view_header_main);
+        textView_footer =(TextView) findViewById((R.id.text_view_footer_main));
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+
+        text_view.setTypeface(typeface);
+        textView_footer.setTypeface(typeface);
+
+
+
+
+
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
             content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
@@ -71,7 +86,10 @@ public class Full_Image_Activity extends Activity
         catch (IOException e) { e.printStackTrace(); }
         catch (SAXException e) { e.printStackTrace(); }
 
+
+
     }
+
 
     public void Change_View(int increment)
     {
@@ -97,6 +115,7 @@ public class Full_Image_Activity extends Activity
 
     @Override
     public boolean onDown(MotionEvent event) {
+
         return true;
     }
 
@@ -104,9 +123,9 @@ public class Full_Image_Activity extends Activity
     public boolean onFling(MotionEvent event1, MotionEvent event2,
                            float velocityX, float velocityY) {
         if (velocityX < 0)
-            Change_View(-1);
-        else if (velocityX > 0)
             Change_View(1);
+        else if (velocityX > 0)
+            Change_View(-1);
         return true;
     }
 
@@ -131,6 +150,8 @@ public class Full_Image_Activity extends Activity
     @Override
     public boolean onSingleTapUp(MotionEvent event)
     {
+        try { content_object_list.get(index).Play_Sound(); }
+        catch (IOException e) { e.printStackTrace(); }
         return true;
     }
 

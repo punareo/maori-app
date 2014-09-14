@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backnew">
+    android:background="@drawable/backnewn">
 
     <TextView
         android:id="@+id/imageView_header_main"
@@ -23,16 +23,16 @@
 
     <GridView
         android:id="@+id/gridview_main"
-        android:layout_width="150dp"
-        android:rotation="270"
-        android:layout_height="150dp"
-        android:columnWidth="90dp"
-        android:numColumns="1"
-        android:verticalSpacing="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnWidth="30dp"
+        android:numColumns="3"
+        android:verticalSpacing="60dp"
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_centerInParent="true"/>
+
 
 
 

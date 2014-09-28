@@ -61,7 +61,7 @@
         <!-- left right swipe place holders-->
 
     <ImageButton
-        android:id="@+id/button_left"
+        android:id="@+id/leftbutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
@@ -70,7 +70,7 @@
 
         />
     <ImageButton
-        android:id="@+id/button_right"
+        android:id="@+id/rightbutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentRight="true"

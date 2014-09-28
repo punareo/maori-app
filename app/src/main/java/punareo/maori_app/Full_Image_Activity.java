@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,22 +33,15 @@ public class Full_Image_Activity extends Activity
     private int index = 0;
     private List<Content_Object> content_object_list;
 
+        private ImageView left_button;
+        private ImageView right_button;
+
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        int img_layout = R.layout.full_image_layout_one;
-        if (savedInstanceState == null)
-        {
-            Bundle extra = getIntent().getExtras();
-            if (extra != null)
-                img_layout = extra.getInt("Layout");
-        }
-        else
-            img_layout = savedInstanceState.getInt("Layout");
-        setContentView(img_layout);
+        setContentView(R.layout.full_image_layout_three);
 
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
@@ -73,10 +67,6 @@ public class Full_Image_Activity extends Activity
         text_view.setTypeface(typeface);
         textView_footer.setTypeface(typeface);
 
-
-
-
-
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
             content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
@@ -87,6 +77,24 @@ public class Full_Image_Activity extends Activity
         catch (SAXException e) { e.printStackTrace(); }
 
 
+
+
+        left_button =(ImageView)findViewById(R.id.leftbutton);
+        right_button =(ImageView) findViewById(R.id.rightbutton);
+
+        left_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Change_View(-1);
+            }
+        });
+
+        right_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Change_View(1);
+            }
+        });
 
     }
 

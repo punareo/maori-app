@@ -22,31 +22,30 @@
 
         <ImageView
             android:id="@+id/full_image_view"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_below="@+id/imageView_header_main"
-            android:layout_above="@+id/imageView_main_Footer"
-            android:layout_height="300dp"
-            android:layout_centerInParent="true"
-            />
+            android:layout_toLeftOf="@+id/rightbutton"
+            android:layout_toRightOf="@+id/leftbutton"
+            android:layout_below="@+id/text_view_header_main"
+            android:layout_above="@+id/text_view_footer_main" />
 
 
         <ImageView
+            android:id="@+id/leftbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/leftbutton"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_toStartOf="@+id/full_image_view"
-
             android:layout_marginLeft="15dp"/>
 
         <ImageView
+            android:id="@+id/rightbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rightbutton"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_toEndOf="@+id/full_image_view"
             android:layout_marginRight="15dp"/>
 
         <TextView

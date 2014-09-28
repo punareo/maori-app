@@ -6,5 +6,8 @@
     <string name="action_settings">Settings</string>
     <string name="close">X</string>
     <string name="Footer_description">this ios a footer container</string>
+    <string name="test_question">Whiriwhiri te tau Wha</string>
+    <string name="image_holder">Image Placeholder</string>
+
 
 </resources>

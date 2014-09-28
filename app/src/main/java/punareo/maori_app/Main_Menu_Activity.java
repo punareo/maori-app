@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
+//Menu 3 with full image 1 - no exit button
 
 class Menu_Option
 {
@@ -39,19 +39,7 @@ public class Main_Menu_Activity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int layout = R.layout.activity_main_menu_layout_one;
-
-
-
-        if (savedInstanceState == null)
-        {
-            Bundle extra = getIntent().getExtras();
-            if (extra != null)
-                layout = extra.getInt("Layout");
-        }
-        else
-            layout = savedInstanceState.getInt("Layout");
-        setContentView(layout);
+        setContentView(R.layout.activity_main_menu_layout_three);
 
         final ArrayList<Menu_Option> menu_options = new ArrayList<Menu_Option>()
         {{
@@ -66,35 +54,18 @@ public class Main_Menu_Activity extends Activity
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
         gridview.setAdapter(new Image_Adapter(this, menu_options));
 
-        switch (layout)
-        {
-            case R.layout.activity_main_menu_layout_one :
-                img_layout = R.layout.full_image_layout_one;
-                break;
-            case R.layout.activity_main_menu_layout_two :
-                img_layout = R.layout.full_image_layout_two;
-                break;
-            case R.layout.activity_main_menu_layout_three :
-                img_layout = R.layout.full_image_layout_three;
-                break;
-            default:
-                img_layout = R.layout.full_image_layout_one;
-        }
-
-
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 Intent i = new Intent(getApplicationContext(), Full_Image_Activity.class);
-                i.putExtra("Layout", img_layout);
                 i.putExtra("Category", menu_options.get(position).Get_Cat());
                 startActivity(i);
 
             }
         });
+
         textView_footer =(TextView) findViewById(R.id.imageView_main_Footer);
         textView_header =(TextView) findViewById(R.id.imageView_header_main);
         Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");

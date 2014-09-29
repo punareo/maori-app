@@ -6,9 +6,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:screenOrientation="user">
-
+        android:screenOrientation="user"
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".Design_Menu"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -19,17 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main_Menu_Activity"
+        <activity
+            android:name=".Main_Menu_Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="user">
-
+            android:screenOrientation="user" >
         </activity>
-
-
-
-        <activity android:name=".Full_Image_Activity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-
+        <activity
+            android:name=".Full_Image_Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game" >
         </activity>
     </application>
 

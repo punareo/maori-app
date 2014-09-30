@@ -35,8 +35,8 @@ public class Design_Menu extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), Main_Menu_Activity.class);
-                i.putExtra("Layout", R.layout.activity_main_menu_layout_two);
+                Intent i = new Intent(getApplicationContext(), GameActivity.class);
+                i.putExtra("Layout", R.layout.activity_game);
                 startActivity(i);
             }
         });

@@ -1,9 +1,12 @@
 package punareo.maori_app;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -22,7 +25,15 @@ import java.util.Random;
 
 public class GameActivity extends Activity {
 
-    public List<Content_Object> content_object_list;
+    private List<Content_Object> content_object_list;
+    private List<ImageButton> button_list;
+    private List<Integer> answer_list;
+
+    private static int the_score;
+    private static int fail_count;
+
+    public Content_Object chosen_question;
+
     TextView question_text;
     ImageButton button_1;
     ImageButton button_2;
@@ -35,9 +46,53 @@ public class GameActivity extends Activity {
         setContentView(R.layout.activity_game);
 
         button_1 = (ImageButton) findViewById(R.id.imageButton);
+        button_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( answer_list.get( 0 ) == chosen_question.Get_Img_ID() ) {
+                    right_answer();
+                }
+                else
+                    wrong_answer();
+            }
+        });
+
         button_2 = (ImageButton) findViewById(R.id.imageButton2);
+        button_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( answer_list.get( 1 ) == chosen_question.Get_Img_ID() ) {
+                    right_answer();
+                }
+                else
+                    wrong_answer();
+            }
+        });
+
         button_3 = (ImageButton) findViewById(R.id.imageButton3);
+        button_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( answer_list.get( 2 ) == chosen_question.Get_Img_ID() ) {
+                    right_answer();
+                }
+                else
+                    wrong_answer();
+            }
+        });
+
         button_4 = (ImageButton) findViewById(R.id.imageButton4);
+        button_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( answer_list.get( 3 ) == chosen_question.Get_Img_ID() ) {
+                    right_answer();
+                }
+                else
+                    wrong_answer();
+            }
+        });
+
         question_text = (TextView) findViewById(R.id.textView2);
 
         try {
@@ -48,21 +103,31 @@ public class GameActivity extends Activity {
         catch (IOException e) { e.printStackTrace(); }
         catch (SAXException e) { e.printStackTrace(); }
 
-        List<ImageButton> button_list = new ArrayList<ImageButton>();
+         button_list = new ArrayList<ImageButton>();
 
         button_list.add( button_1 );
         button_list.add( button_2 );
         button_list.add( button_3 );
         button_list.add( button_4 );
 
-        List<Integer> answer_list = new ArrayList<Integer>();
+        initialize_game();
+        generate_question();
+    }
+
+    public void initialize_game() {
+        the_score = 0;
+        fail_count = 0;
+    }
+
+    public void generate_question() {
+        answer_list = new ArrayList<Integer>();
 
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
-        Content_Object chosen_object = content_object_list.get( index );
+        chosen_question = content_object_list.get( index );
 
-        question_text.setText("Whiriwhiri te kau " + chosen_object.getName() + "?");
-        answer_list.add( chosen_object.Get_Img_ID() );
+        question_text.setText("Whiriwhiri te kau " + chosen_question.getName() + "?");
+        answer_list.add(chosen_question.Get_Img_ID());
 
         do {
             Boolean is_chosen = false;
@@ -78,8 +143,40 @@ public class GameActivity extends Activity {
         Collections.shuffle( answer_list );
 
         for( int i = 0; i <= answer_list.size() - 1; i++ ) {
-            button_list.get( i ).setImageResource( answer_list.get( i ) );
+            button_list.get( i ).setImageResource(answer_list.get(i));
         }
+    }
+
+    public void right_answer() {
+        the_score += 100;
+        generate_question();
+    }
+
+    public void wrong_answer() {
+        fail_count += 1;
+        if( fail_count == 3 )
+            game_over();
+        else
+            generate_question();
+    }
+
+    public void game_over() {
+        new AlertDialog.Builder(this)
+            .setTitle("Game Over")
+            .setMessage("Your score is " + the_score + ".\nWould you like to play again?")
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    initialize_game();
+                    generate_question();
+                }
+            })
+            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick( DialogInterface dialog, int which) {
+                    finish();
+                }
+            })
+            .setIcon( android.R.drawable.ic_dialog_alert )
+            .show();
     }
 
     public static int rand_num_in_range( int min, int max ) {

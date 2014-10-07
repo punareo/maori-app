@@ -72,8 +72,6 @@ public class Main_Menu_Activity extends Activity
 
         textView_header.setTypeface(typeface);
         textView_footer.setTypeface(typeface);
-
-
     }
 
 

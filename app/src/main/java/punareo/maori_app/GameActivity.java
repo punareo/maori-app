@@ -27,7 +27,7 @@ public class GameActivity extends Activity {
 
     private List<Content_Object> content_object_list;
     private List<ImageButton> button_list;
-    private List<Integer> answer_list;
+    private List<Content_Object> answer_list;
 
     private static int the_score;
     private static int fail_count;
@@ -49,11 +49,22 @@ public class GameActivity extends Activity {
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( answer_list.get( 0 ) == chosen_question.Get_Img_ID() ) {
+                Content_Object button_obj = (Content_Object) button_1.getTag();
+                try {
+                    button_obj.Play_Sound();
+                } catch ( IOException e ) { e.printStackTrace(); }
+            }
+        });
+        button_1.setOnLongClickListener( new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Content_Object button_obj = (Content_Object) button_1.getTag();
+                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
+                return false;
             }
         });
 
@@ -61,11 +72,22 @@ public class GameActivity extends Activity {
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( answer_list.get( 1 ) == chosen_question.Get_Img_ID() ) {
+                Content_Object button_obj = (Content_Object) button_2.getTag();
+                try {
+                    button_obj.Play_Sound();
+                } catch ( IOException e ) { e.printStackTrace(); }
+            }
+        });
+        button_2.setOnLongClickListener( new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Content_Object button_obj = (Content_Object) button_2.getTag();
+                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
+                return false;
             }
         });
 
@@ -73,11 +95,22 @@ public class GameActivity extends Activity {
         button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( answer_list.get( 2 ) == chosen_question.Get_Img_ID() ) {
+                Content_Object button_obj = (Content_Object) button_3.getTag();
+                try {
+                    button_obj.Play_Sound();
+                } catch ( IOException e ) { e.printStackTrace(); }
+            }
+        });
+        button_3.setOnLongClickListener( new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Content_Object button_obj = (Content_Object) button_3.getTag();
+                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
+                return false;
             }
         });
 
@@ -85,11 +118,22 @@ public class GameActivity extends Activity {
         button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( answer_list.get( 3 ) == chosen_question.Get_Img_ID() ) {
+                Content_Object button_obj = (Content_Object) button_4.getTag();
+                try {
+                    button_obj.Play_Sound();
+                } catch ( IOException e ) { e.printStackTrace(); }
+            }
+        });
+        button_4.setOnLongClickListener( new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Content_Object button_obj = (Content_Object) button_4.getTag();
+                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
+                return false;
             }
         });
 
@@ -120,35 +164,39 @@ public class GameActivity extends Activity {
     }
 
     public void generate_question() {
-        answer_list = new ArrayList<Integer>();
+        answer_list = new ArrayList<Content_Object>();
 
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
         chosen_question = content_object_list.get( index );
 
         question_text.setText("Whiriwhiri te kau " + chosen_question.getName() + "?");
-        answer_list.add(chosen_question.Get_Img_ID());
+        answer_list.add( chosen_question );
 
         do {
             Boolean is_chosen = false;
             index = rand_num_in_range(0, content_object_list.size() - 1 );
             for( int i = 0; i <= answer_list.size() - 1; i++ ) {
-                if( content_object_list.get( index ).Get_Img_ID() == answer_list.get( i ) )
+                if( content_object_list.get( index ) == answer_list.get( i ) )
                     is_chosen = true;
             }
             if( !is_chosen )
-                answer_list.add( content_object_list.get( index ).Get_Img_ID() );
+                answer_list.add( content_object_list.get( index ) );
         } while (answer_list.size() != 4 );
 
         Collections.shuffle( answer_list );
 
         for( int i = 0; i <= answer_list.size() - 1; i++ ) {
-            button_list.get( i ).setImageResource(answer_list.get(i));
+            button_list.get( i ).setImageResource(answer_list.get( i ).Get_Img_ID() );
+            button_list.get( i ).setTag( answer_list.get( i ) );
         }
     }
 
     public void right_answer() {
         the_score += 100;
+        try {
+            chosen_question.Play_Sound();
+        } catch ( IOException e ) { e.printStackTrace(); }
         generate_question();
     }
 

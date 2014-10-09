@@ -7,5 +7,9 @@
     <string name="close">X</string>
     <string name="Footer_description">this ios a footer container</string>
     <string name="title_activity_game">GameActivity</string>
-
+    <string name="image_holder">Image Place Holder</string>
+    <string name="test_question">Test Question</string>
+    <string name="Learning">Learning</string>
+    <string name="Game">Game</string>
+    <string name="stories">Story</string>
 </resources>

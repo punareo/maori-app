@@ -43,12 +43,13 @@ public class Main_Menu_Activity extends Activity
 
         final ArrayList<Menu_Option> menu_options = new ArrayList<Menu_Option>()
         {{
-                add(new Menu_Option("Animals", R.drawable.animal));
-                add(new Menu_Option("Numbers", R.drawable.number));
-                add(new Menu_Option("Shapes", R.drawable.shape));
-                add(new Menu_Option("Letters", R.drawable.letter));
-                add(new Menu_Option("Colours", R.drawable.colour));
-                add(new Menu_Option("Body parts", R.drawable.bodypart));
+                add(new Menu_Option("Animals", R.drawable.buttonanimal));
+                add(new Menu_Option("Numbers", R.drawable.buttonnumber));
+                add(new Menu_Option("Shapes", R.drawable.buttonshape));
+                add(new Menu_Option("Letters", R.drawable.buttonletter));
+                add(new Menu_Option("DaysoftheWeek", R.drawable.buttondaysoftheweek));
+                add(new Menu_Option("Colours", R.drawable.buttoncolour));
+
         }};
 
         GridView gridview = (GridView) findViewById(R.id.gridview_main);

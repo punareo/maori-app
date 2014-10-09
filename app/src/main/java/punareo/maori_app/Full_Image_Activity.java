@@ -41,7 +41,7 @@ public class Full_Image_Activity extends Activity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.full_image_layout_three);
+        setContentView(R.layout.full_image_layout_one);
 
         this.gDetector = new GestureDetectorCompat(this, this);
         gDetector.setOnDoubleTapListener(this);
@@ -108,6 +108,7 @@ public class Full_Image_Activity extends Activity
             index = content_object_list.size() - 1;
 
         text_view.setText(content_object_list.get(index).getName());
+        textView_footer.setText(content_object_list.get(index).getName());
         image_view.setImageResource(content_object_list.get(index).Get_Img_ID());
         try { content_object_list.get(index).Play_Sound(); }
             catch (IOException e) { e.printStackTrace(); }

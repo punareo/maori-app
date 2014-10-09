@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:background="@drawable/backnewn">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <TextView
             android:id="@+id/text_view_header_main"
@@ -17,17 +15,18 @@
             android:textSize="60sp"
             android:gravity="center"
             android:textStyle="bold"
-            android:textAllCaps="true"
             />
+
 
         <ImageView
             android:id="@+id/full_image_view"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_toLeftOf="@+id/rightbutton"
-            android:layout_toRightOf="@+id/leftbutton"
+           android:layout_centerInParent="true"
             android:layout_below="@+id/text_view_header_main"
-            android:layout_above="@+id/text_view_footer_main" />
+            android:layout_above="@+id/text_view_footer_main"
+
+        />
 
 
         <ImageView
@@ -35,18 +34,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/leftbutton"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="15dp"/>
+            android:layout_centerVertical="true"
+            />
 
         <ImageView
             android:id="@+id/rightbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rightbutton"
-            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"/>
+            android:layout_centerVertical="true"
+            />
+
+
 
         <TextView
             android:id="@+id/text_view_footer_main"
@@ -57,8 +60,6 @@
             android:textSize="60sp"
             android:gravity="center"
             android:textStyle="bold"
-            android:textAllCaps="true"
             />
-    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

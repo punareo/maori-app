@@ -3,13 +3,12 @@ package punareo.maori_app;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.xml.sax.SAXException;
@@ -31,8 +30,9 @@ public class GameActivity extends Activity {
 
     private static int the_score;
     private static int fail_count;
-
+    private TextView score_display;
     public Content_Object chosen_question;
+    private TextView text_header;
 
     TextView question_text;
     ImageButton button_1;
@@ -43,9 +43,18 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.game_layout);
 
-        button_1 = (ImageButton) findViewById(R.id.imageButton);
+
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+
+        text_header = (TextView) findViewById(R.id.text_view_header);
+        score_display = (TextView) findViewById(R.id.text_view_score);
+        score_display.setTypeface(typeface);
+        text_header.setTypeface(typeface);
+
+
+        button_1 = (ImageButton) findViewById(R.id.image_button_NW);
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,22 +62,15 @@ public class GameActivity extends Activity {
                 try {
                     button_obj.Play_Sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-            }
-        });
-        button_1.setOnLongClickListener( new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Content_Object button_obj = (Content_Object) button_1.getTag();
                 if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
-                return false;
             }
         });
 
-        button_2 = (ImageButton) findViewById(R.id.imageButton2);
+        button_2 = (ImageButton) findViewById(R.id.image_button_NE);
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,22 +78,15 @@ public class GameActivity extends Activity {
                 try {
                     button_obj.Play_Sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-            }
-        });
-        button_2.setOnLongClickListener( new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Content_Object button_obj = (Content_Object) button_2.getTag();
                 if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
-                return false;
             }
         });
 
-        button_3 = (ImageButton) findViewById(R.id.imageButton3);
+        button_3 = (ImageButton) findViewById(R.id.image_button_SE);
         button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,22 +94,14 @@ public class GameActivity extends Activity {
                 try {
                     button_obj.Play_Sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-            }
-        });
-        button_3.setOnLongClickListener( new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Content_Object button_obj = (Content_Object) button_3.getTag();
                 if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
-                return false;
             }
         });
-
-        button_4 = (ImageButton) findViewById(R.id.imageButton4);
+        button_4 = (ImageButton) findViewById(R.id.image_button_SW);
         button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,22 +109,16 @@ public class GameActivity extends Activity {
                 try {
                     button_obj.Play_Sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-            }
-        });
-        button_4.setOnLongClickListener( new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Content_Object button_obj = (Content_Object) button_4.getTag();
                 if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
                     right_answer();
                 }
                 else
                     wrong_answer();
-                return false;
             }
         });
 
-        question_text = (TextView) findViewById(R.id.textView2);
+        question_text = (TextView) findViewById(R.id.text_view_question);
+        question_text.setTypeface(typeface);
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
@@ -170,7 +151,7 @@ public class GameActivity extends Activity {
 
         chosen_question = content_object_list.get( index );
 
-        question_text.setText("Whiriwhiri te kau " + chosen_question.getName() + "?");
+        question_text.setText("Whiriwhiri te Tau " + chosen_question.getName());
         answer_list.add( chosen_question );
 
         do {
@@ -194,9 +175,7 @@ public class GameActivity extends Activity {
 
     public void right_answer() {
         the_score += 100;
-        try {
-            chosen_question.Play_Sound();
-        } catch ( IOException e ) { e.printStackTrace(); }
+        score_display.setText("" + the_score);
         generate_question();
     }
 
@@ -209,6 +188,7 @@ public class GameActivity extends Activity {
     }
 
     public void game_over() {
+        score_display.setText("");
         new AlertDialog.Builder(this)
             .setTitle("Game Over")
             .setMessage("Your score is " + the_score + ".\nWould you like to play again?")

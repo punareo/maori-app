@@ -1,94 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
 <file>
     <category name="Animals">
-        <object name="Kea">
-            <name type="text">Aporo</name>
-            <imgpath type="text">drawable/apple</imgpath>
-            <soundpath type="text">raw/asound</soundpath>
+        <object name="Bat">
+            <name type="text">Pekapeka</name>
+            <imgpath type="text">drawable/bat</imgpath>
+            <soundpath type="text">raw/pekapeka</soundpath>
         </object>
-        <object name="Pig">
-            <name type="text">Poeka</name>
-            <imgpath type="text">drawable/one</imgpath>
-            <soundpath type="text">raw/ratmove</soundpath>
+        <object name="Dolphin">
+                 <name type="text">Aihe</name>
+            <imgpath type="text">drawable/dolphin</imgpath>
+            <soundpath type="text">raw/aihe</soundpath>
+        </object>
+        <object name="Goat">
+            <name type="text">Nanekoti</name>
+            <imgpath type="text">drawable/goat</imgpath>
+            <soundpath type="text">raw/nanekoti</soundpath>
         </object>
         <object name="Horse">
             <name type="text">Hoiho</name>
-            <imgpath type="text">drawable/eight</imgpath>
-            <soundpath type="text">raw/ratbat</soundpath>
+            <imgpath type="text">drawable/horse</imgpath>
+            <soundpath type="text">raw/hoiho</soundpath>
         </object>
-        <object name="cow">
-            <name type="text">Wha</name>
-            <imgpath type="text">drawable/four</imgpath>
-            <soundpath type="text">raw/ratbat</soundpath>
+        <object name="Rabbit">
+            <name type="text">Rapeti</name>
+            <imgpath type="text">drawable/rabbit</imgpath>
+            <soundpath type="text">raw/rapete</soundpath>
+        </object>
+        <object name="Monkey">
+            <name type="text">Makimaki</name>
+            <imgpath type="text">drawable/monkey</imgpath>
+            <soundpath type="text">raw/makimaki</soundpath>
+        </object>
+        <object name="Mouse">
+            <name type="text">Kiore</name>
+            <imgpath type="text">drawable/mouse</imgpath>
+            <soundpath type="text">raw/kiore</soundpath>
+        </object>
+        <object name="Pig">
+            <name type="text">Poaka</name>
+            <imgpath type="text">drawable/pig</imgpath>
+            <soundpath type="text">raw/poaka</soundpath>
+        </object>
+        <object name="Sheep">
+            <name type="text">Hipi</name>
+            <imgpath type="text">drawable/sheep</imgpath>
+            <soundpath type="text">raw/hipi</soundpath>
+        </object>
+        <object name="Chicken">
+            <name type="text">Heihei</name>
+            <imgpath type="text">drawable/chicken</imgpath>
+            <soundpath type="text">raw/heihei</soundpath>
+        </object>
+        <object name="Cow">
+            <name type="text">Kau</name>
+            <imgpath type="text">drawable/cow</imgpath>
+            <soundpath type="text">raw/kau</soundpath>
+        </object>
+        <object name="Cat">
+            <name type="text">Ngeru</name>
+            <imgpath type="text">drawable/cat</imgpath>
+            <soundpath type="text">raw/ngeru</soundpath>
+        </object>
+        <object name="Rooster">
+            <name type="text">Pikaokao</name>
+            <imgpath type="text">drawable/rooster</imgpath>
+            <soundpath type="text">raw/pikaokao</soundpath>
         </object>
     </category>
     <category name="Numbers">
+        <object name="zero">
+            <name type="text">Kore</name>
+            <imgpath type="text">drawable/zero</imgpath>
+            <soundpath type="text">raw/kore</soundpath>
+        </object>
         <object name="One">
             <name type="text">Tahi</name>
             <imgpath type="text">drawable/one</imgpath>
-            <soundpath type="text">raw/one</soundpath>
+            <soundpath type="text">raw/tahi</soundpath>
         </object>
         <object name="Two">
             <name type="text">Rua</name>
             <imgpath type="text">drawable/two</imgpath>
-            <soundpath type="text">raw/two</soundpath>
+            <soundpath type="text">raw/rua</soundpath>
         </object>
         <object name="Three">
             <name type="text">Toru</name>
             <imgpath type="text">drawable/three</imgpath>
-            <soundpath type="text">raw/three</soundpath>
+            <soundpath type="text">raw/toru</soundpath>
         </object>
         <object name="Four">
             <name type="text">Wha</name>
             <imgpath type="text">drawable/four</imgpath>
-            <soundpath type="text">raw/four</soundpath>
+            <soundpath type="text">raw/wha</soundpath>
         </object>
         <object name="Five">
             <name type="text">Rima</name>
             <imgpath type="text">drawable/five</imgpath>
-            <soundpath type="text">raw/five</soundpath>
+            <soundpath type="text">raw/rima</soundpath>
         </object>
         <object name="six">
             <name type="text">Ono</name>
             <imgpath type="text">drawable/six</imgpath>
-            <soundpath type="text">raw/six</soundpath>
+            <soundpath type="text">raw/ono</soundpath>
         </object>
         <object name="Seven">
             <name type="text">Whitu</name>
             <imgpath type="text">drawable/seven</imgpath>
-            <soundpath type="text">raw/seven</soundpath>
+            <soundpath type="text">raw/whetu</soundpath>
         </object>
         <object name="Eight">
             <name type="text">Waru</name>
             <imgpath type="text">drawable/eight</imgpath>
-            <soundpath type="text">raw/eight</soundpath>
+            <soundpath type="text">raw/waru</soundpath>
         </object>
         <object name="Nine">
             <name type="text">Iwa</name>
             <imgpath type="text">drawable/nine</imgpath>
-            <soundpath type="text">raw/nine</soundpath>
+            <soundpath type="text">raw/iwa</soundpath>
+        </object>
+        <object name="Ten">
+            <name type="text">Ngahuru</name>
+            <imgpath type="text">drawable/ten</imgpath>
+            <soundpath type="text">raw/ngahuru</soundpath>
+        </object>
+    </category>
+    <category name="Colours">
+        <object name="Red">
+            <name type="text">Whero</name>
+            <imgpath type="text">drawable/red</imgpath>
+            <soundpath type="text">raw/whero</soundpath>
+        </object>
+        <object name="blue">
+            <name type="text">Kahurangi</name>
+            <imgpath type="text">drawable/blue</imgpath>
+            <soundpath type="text">raw/kahurangi</soundpath>
+        </object>
+        <object name="yellow">
+            <name type="text">Kowhai</name>
+            <imgpath type="text">drawable/yellow</imgpath>
+            <soundpath type="text">raw/kowhai</soundpath>
+        </object>
+        <object name="White">
+            <name type="text">Ma</name>
+            <imgpath type="text">drawable/white</imgpath>
+            <soundpath type="text">raw/ma</soundpath>
+        </object>
+        <object name="black">
+            <name type="text">Pango</name>
+            <imgpath type="text">drawable/black</imgpath>
+            <soundpath type="text">raw/pango</soundpath>
+        </object>
+        <object name="Grey">
+            <name type="text">Kiwikiwi</name>
+            <imgpath type="text">drawable/grey</imgpath>
+            <soundpath type="text">raw/kiwikiwi</soundpath>
+        </object>
+        <object name="green">
+            <name type="text">Kakariki</name>
+            <imgpath type="text">drawable/green</imgpath>
+            <soundpath type="text">raw/kakariki</soundpath>
+        </object>
+        <object name="Pink">
+            <name type="text">Mawhero</name>
+            <imgpath type="text">drawable/pink</imgpath>
+            <soundpath type="text">raw/mawhero</soundpath>
+        </object>
+        <object name="Purple">
+            <name type="text">Waiporoporo</name>
+            <imgpath type="text">drawable/purple</imgpath>
+            <soundpath type="text">raw/waiporoporo</soundpath>
+        </object>
+        <object name="Brown">
+            <name type="text">Parauri</name>
+            <imgpath type="text">drawable/brown</imgpath>
+            <soundpath type="text">raw/parauri</soundpath>
+        </object>
+        <object name="Orange">
+            <name type="text">Karaka</name>
+            <imgpath type="text">drawable/orange</imgpath>
+            <soundpath type="text">raw/karaka</soundpath>
+        </object>
+    </category>
+    <category name="Letters">
+        <object name="A">
+            <name type="text">A a</name>
+            <imgpath type="text">drawable/elephant</imgpath>
+            <soundpath type="text">raw/a_arewhana</soundpath>
+        </object>
+        <object name="E">
+            <name type="text">E e</name>
+            <imgpath type="text">drawable/blue</imgpath>
+            <soundpath type="text">raw/e_eka</soundpath>
+        </object>
+        <object name="H">
+            <name type="text">H h</name>
+            <imgpath type="text">drawable/chicken</imgpath>
+            <soundpath type="text">raw/h_heihei</soundpath>
+        </object>
+        <object name="I">
+            <name type="text">I i</name>
+            <imgpath type="text">drawable/eight</imgpath>
+            <soundpath type="text">raw/i_iwa</soundpath>
+        </object>
+        <object name="K">
+            <name type="text">K k</name>
+            <imgpath type="text">drawable/cow</imgpath>
+            <soundpath type="text">raw/k_kau</soundpath>
+        </object>
+        <object name="M">
+            <name type="text">M m</name>
+            <imgpath type="text">drawable/white</imgpath>
+            <soundpath type="text">raw/m_maika</soundpath>
+        </object>
+        <object name="N">
+            <name type="text">N n</name>
+            <imgpath type="text">drawable/teeth</imgpath>
+            <soundpath type="text">raw/n_niho</soundpath>
+        </object>
+        <object name="NG">
+            <name type="text">Ng ng</name>
+            <imgpath type="text">drawable/cat</imgpath>
+            <soundpath type="text">raw/ng_ngeru</soundpath>
+        </object>
+        <object name="O">
+            <name type="text">O o</name>
+            <imgpath type="text">drawable/six</imgpath>
+            <soundpath type="text">raw/o_ono</soundpath>
+        </object>
+        <object name="P">
+            <name type="text">P p</name>
+            <imgpath type="text">drawable/rooster</imgpath>
+            <soundpath type="text">raw/p_pikaokao</soundpath>
+        </object>
+        <object name="R">
+            <name type="text">R r</name>
+            <imgpath type="text">drawable/rabbit</imgpath>
+            <soundpath type="text">raw/r_rapete</soundpath>
+        </object>
+        <object name="T">
+            <name type="text">T t</name>
+            <imgpath type="text">drawable/one</imgpath>
+            <soundpath type="text">raw/t_tiu</soundpath>
+        </object>
+        <object name="U">
+            <name type="text">U u</name>
+            <imgpath type="text">drawable/radish</imgpath>
+            <soundpath type="text">raw/u_uhikura</soundpath>
+        </object>
+        <object name="W">
+            <name type="text">W w</name>
+            <imgpath type="text">drawable/feet</imgpath>
+            <soundpath type="text">raw/w_waiwai</soundpath>
+        </object>
+        <object name="Wh">
+            <name type="text">Wh wh</name>
+            <imgpath type="text">drawable/red</imgpath>
+            <soundpath type="text">raw/wh_whero</soundpath>
         </object>
     </category>
     <category name="Shapes">
-        <object name="Kea">
-            <name type="text">Aporo</name>
-            <imgpath type="text">drawable/apple</imgpath>
-            <soundpath type="text">raw/asound</soundpath>
+        <object name="Rectangle">
+            <name type="text">Tapawha Roa</name>
+            <imgpath type="text">drawable/rectangle</imgpath>
+            <soundpath type="text">raw/tapawharoa</soundpath>
         </object>
-        <object name="Pig">
-            <name type="text">Poeka</name>
-            <imgpath type="text">drawable/one</imgpath>
-            <soundpath type="text">raw/ratmove</soundpath>
+        <object name="Square">
+            <name type="text">Tapawha</name>
+            <imgpath type="text">drawable/square</imgpath>
+            <soundpath type="text">raw/tapawha</soundpath>
         </object>
-        <object name="Horse">
-            <name type="text">Hoiho</name>
-            <imgpath type="text">drawable/eight</imgpath>
-            <soundpath type="text">raw/ratbat</soundpath>
+        <object name="Star">
+            <name type="text">Whetu</name>
+            <imgpath type="text">drawable/star</imgpath>
+            <soundpath type="text">raw/whetu</soundpath>
         </object>
-        <object name="cow">
-            <name type="text">Wha</name>
-            <imgpath type="text">drawable/four</imgpath>
-            <soundpath type="text">raw/ratbat</soundpath>
+        <object name="Triangle">
+            <name type="text">Tapatoru</name>
+            <imgpath type="text">drawable/triangle</imgpath>
+            <soundpath type="text">raw/tapatoru</soundpath>
+        </object>
+        <object name="Circle">
+            <name type="text">Porowhita</name>
+            <imgpath type="text">drawable/circle</imgpath>
+            <soundpath type="text">raw/porowhita</soundpath>
+        </object>
+        <object name="Diamond">
+            <name type="text">Patiki</name>
+            <imgpath type="text">drawable/diamond</imgpath>
+            <soundpath type="text">raw/patiki</soundpath>
+        </object>
+        <object name="Heart">
+            <name type="text">Manawa</name>
+            <imgpath type="text">drawable/heart</imgpath>
+            <soundpath type="text">raw/manawa</soundpath>
+        </object>
+        <object name="Cross">
+            <name type="text">Ripeka</name>
+            <imgpath type="text">drawable/cross</imgpath>
+            <soundpath type="text">raw/ripeka</soundpath>
+        </object>
+        <object name="crescent">
+            <name type="text">Marama</name>
+            <imgpath type="text">drawable/crescent</imgpath>
+            <soundpath type="text">raw/marama</soundpath>
+        </object>
+    </category>
+    <category name="DaysoftheWeek">
+        <object name="Monday">
+            <name type="text">Rahina</name>
+            <imgpath type="text">drawable/rectangle</imgpath>
+            <soundpath type="text">raw/rahina</soundpath>
+        </object>
+        <object name="Tuesday">
+            <name type="text">Ratu</name>
+            <imgpath type="text">drawable/square</imgpath>
+            <soundpath type="text">raw/ratu</soundpath>
+        </object>
+        <object name="Wednesday">
+            <name type="text">Raapa</name>
+            <imgpath type="text">drawable/star</imgpath>
+            <soundpath type="text">raw/raapa</soundpath>
+        </object>
+        <object name="Thursday">
+            <name type="text">Rapare</name>
+            <imgpath type="text">drawable/triangle</imgpath>
+            <soundpath type="text">raw/rapare</soundpath>
+        </object>
+        <object name="Friday">
+            <name type="text">Ramere</name>
+            <imgpath type="text">drawable/circle</imgpath>
+            <soundpath type="text">raw/ramere</soundpath>
+        </object>
+        <object name="Saturday">
+            <name type="text">Rahoroi</name>
+            <imgpath type="text">drawable/diamond</imgpath>
+            <soundpath type="text">raw/rahoroi</soundpath>
+        </object>
+        <object name="Sunday">
+            <name type="text">Ratapu</name>
+            <imgpath type="text">drawable/heart</imgpath>
+            <soundpath type="text">raw/ratapu</soundpath>
         </object>
     </category>
 </file>

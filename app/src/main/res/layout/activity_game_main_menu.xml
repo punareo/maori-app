@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundwashed">
+
+    <TextView
+        android:id="@+id/imageView_header_main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/app_name"
+        android:textSize="60sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+
+        />
+
+
+    <!-- GridView(gridview_main)to display category images -->
+
+
+    <GridView
+        android:id="@+id/gridview_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnWidth="30dp"
+        android:numColumns="3"
+        android:verticalSpacing="60dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_centerInParent="true"/>
+
+
+
+
+    <!--(imageView_main_Footer)footer Displays Information-->
+    <TextView
+        android:id="@+id/imageView_main_Footer"
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        />
+</RelativeLayout>

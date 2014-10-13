@@ -19,12 +19,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main_Menu_Activity"
+            android:name=".CategoryMenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="user" >
         </activity>
         <activity
-            android:name=".Full_Image_Activity"
+            android:name=".LearningActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" >
         </activity>
         <activity

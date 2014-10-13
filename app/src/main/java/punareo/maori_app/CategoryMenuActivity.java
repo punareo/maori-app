@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 //Menu 3 with full image 1 - no exit button
 
-class Menu_Option
+class MenuOption
 {
     private String category;
     private int id;
 
-    public Menu_Option(String category, int id)
+    public MenuOption(String category, int id)
     {
         this.category = category;
         this.id = id;
@@ -31,39 +31,51 @@ class Menu_Option
 }
 
 
-public class Main_Menu_Activity extends Activity
+public class CategoryMenuActivity extends Activity
 {
     private TextView textView_header;
     private TextView textView_footer;
-    private int img_layout;
+    String activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu_layout_three);
 
-        final ArrayList<Menu_Option> menu_options = new ArrayList<Menu_Option>()
+        Bundle extras = getIntent().getExtras();
+        if( extras != null ) {
+            activity = extras.getString( "Activity" );
+            setContentView( extras.getInt( "Layout" ) );
+        }
+
+        final ArrayList<MenuOption> menu_options = new ArrayList<MenuOption>()
         {{
-                add(new Menu_Option("Animals", R.drawable.buttonanimal));
-                add(new Menu_Option("Numbers", R.drawable.buttonnumber));
-                add(new Menu_Option("Shapes", R.drawable.buttonshape));
-                add(new Menu_Option("Letters", R.drawable.buttonletter));
-                add(new Menu_Option("DaysoftheWeek", R.drawable.buttondaysoftheweek));
-                add(new Menu_Option("Colours", R.drawable.buttoncolour));
+                add(new MenuOption("Animals", R.drawable.buttonanimal));
+                add(new MenuOption("Numbers", R.drawable.buttonnumber));
+                add(new MenuOption("Shapes", R.drawable.buttonshape));
+                add(new MenuOption("Letters", R.drawable.buttonletter));
+                add(new MenuOption("DaysoftheWeek", R.drawable.buttondaysoftheweek));
+                add(new MenuOption("Colours", R.drawable.buttoncolour));
 
         }};
 
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
         gridview.setAdapter(new Image_Adapter(this, menu_options));
 
+
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent i = new Intent(getApplicationContext(), Full_Image_Activity.class);
+                Intent i = new Intent();
+
+                if( activity.equals( "Learning" ) )
+                    i = new Intent(getApplicationContext(), LearningActivity.class);
+                else if( activity.equals( "Games" ) )
+                    i = new Intent(getApplicationContext(), GameActivity.class);
+
                 i.putExtra("Category", menu_options.get(position).Get_Cat());
                 startActivity(i);
-
             }
         });
 

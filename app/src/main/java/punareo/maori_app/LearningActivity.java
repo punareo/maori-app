@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Full_Image_Activity extends Activity
+public class LearningActivity extends Activity
     implements GestureDetector.OnGestureListener,
                 GestureDetector.OnDoubleTapListener
     {

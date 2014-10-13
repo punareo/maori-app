@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class Image_Adapter extends BaseAdapter {
     private Context mContext;
-    ArrayList<Menu_Option> menu_options;
+    ArrayList<MenuOption> menu_options;
     //Constructor
-    public Image_Adapter(Context c, ArrayList<Menu_Option> menu_options)
+    public Image_Adapter(Context c, ArrayList<MenuOption> menu_options)
     {
         this.menu_options = menu_options;
         mContext = c;
@@ -30,7 +30,7 @@ public class Image_Adapter extends BaseAdapter {
         return menu_options.size();
     }
     @Override
-    public Menu_Option getItem(int position)
+    public MenuOption getItem(int position)
     {
         return menu_options.get(position);
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <file>
-    <category name="Animals">
+    <category name="Kararehe">
         <object name="Bat">
             <name type="text">Pekapeka</name>
             <imgpath type="text">drawable/bat</imgpath>
@@ -67,7 +67,7 @@
             <soundpath type="text">raw/pikaokao</soundpath>
         </object>
     </category>
-    <category name="Numbers">
+    <category name="Tau">
         <object name="zero">
             <name type="text">Kore</name>
             <imgpath type="text">drawable/zero</imgpath>
@@ -124,7 +124,7 @@
             <soundpath type="text">raw/ngahuru</soundpath>
         </object>
     </category>
-    <category name="Colours">
+    <category name="Tae">
         <object name="Red">
             <name type="text">Whero</name>
             <imgpath type="text">drawable/red</imgpath>
@@ -181,7 +181,7 @@
             <soundpath type="text">raw/karaka</soundpath>
         </object>
     </category>
-    <category name="Letters">
+    <category name="Wakapu">
         <object name="A">
             <name type="text">A a</name>
             <imgpath type="text">drawable/elephant</imgpath>
@@ -258,7 +258,7 @@
             <soundpath type="text">raw/wh_whero</soundpath>
         </object>
     </category>
-    <category name="Shapes">
+    <category name="Ahua">
         <object name="Rectangle">
             <name type="text">Tapawha Roa</name>
             <imgpath type="text">drawable/rectangle</imgpath>
@@ -305,7 +305,7 @@
             <soundpath type="text">raw/marama</soundpath>
         </object>
     </category>
-    <category name="DaysoftheWeek">
+    <category name="Ra o te Wiki">
         <object name="Monday">
             <name type="text">Rahina</name>
             <imgpath type="text">drawable/rectangle</imgpath>

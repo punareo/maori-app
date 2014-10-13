@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class GameActivity extends Activity {
 
-    private List<Content_Object> content_object_list;
+
     private List<ImageButton> button_list;
     private List<Content_Object> answer_list;
 
@@ -33,6 +33,7 @@ public class GameActivity extends Activity {
     private TextView score_display;
     public Content_Object chosen_question;
     private TextView text_header;
+    private List<Content_Object> content_object_list;
 
     TextView question_text;
     ImageButton button_1;
@@ -45,6 +46,17 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
 
+        String category = "";
+        if (savedInstanceState == null)
+        {
+            Bundle extra = getIntent().getExtras();
+            if (extra == null)
+                category = null;
+            else
+                category = extra.getString("Category");
+        }
+        else
+            category = (String) savedInstanceState.getSerializable("Category");
 
         Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
 
@@ -122,7 +134,7 @@ public class GameActivity extends Activity {
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
-            content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, "Numbers"));
+            content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
         }
         catch (XmlPullParserException e) { e.printStackTrace(); }
         catch (IOException e) { e.printStackTrace(); }
@@ -151,7 +163,7 @@ public class GameActivity extends Activity {
 
         chosen_question = content_object_list.get( index );
 
-        question_text.setText("Whiriwhiri te Tau " + chosen_question.getName());
+        question_text.setText("Whiriwhiri te "+ chosen_question.getName());
         answer_list.add( chosen_question );
 
         do {

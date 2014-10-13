@@ -25,11 +25,14 @@
         </activity>
         <activity
             android:name=".LearningActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="user">
         </activity>
         <activity
             android:name=".GameActivity"
-            android:label="@string/title_activity_game" >
+            android:label="@string/title_activity_game"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="user">
         </activity>
     </application>
 

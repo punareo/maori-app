@@ -49,12 +49,12 @@ public class CategoryMenuActivity extends Activity
 
         final ArrayList<MenuOption> menu_options = new ArrayList<MenuOption>()
         {{
-                add(new MenuOption("Animals", R.drawable.buttonanimal));
-                add(new MenuOption("Numbers", R.drawable.buttonnumber));
-                add(new MenuOption("Shapes", R.drawable.buttonshape));
-                add(new MenuOption("Letters", R.drawable.buttonletter));
-                add(new MenuOption("DaysoftheWeek", R.drawable.buttondaysoftheweek));
-                add(new MenuOption("Colours", R.drawable.buttoncolour));
+                add(new MenuOption("Kararehe", R.drawable.buttonanimal));
+                add(new MenuOption("Tau", R.drawable.buttonnumber));
+                add(new MenuOption("Ahua", R.drawable.buttonshape));
+                add(new MenuOption("Wakapu", R.drawable.buttonletter));
+                add(new MenuOption("Ra o te wiki", R.drawable.buttondaysoftheweek));
+                add(new MenuOption("Tae", R.drawable.buttoncolour));
 
         }};
 

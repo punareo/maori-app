@@ -48,7 +48,7 @@
                 android:textSize="40sp"
                 android:layout_height="fill_parent"
                 android:text="@string/Game"
-                android:background="@drawable/backnew"
+                android:background="@drawable/backgroundbigcities"
                 style="@style/AppTheme"
                 />
 

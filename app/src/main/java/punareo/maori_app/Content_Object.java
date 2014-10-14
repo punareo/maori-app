@@ -14,7 +14,6 @@ public class Content_Object
     private int img_id;
     private int snd_id;
     private Context c;
-    private MediaPlayer player;
 
     public Content_Object (Context c, String name, String img, String snd)
     {
@@ -22,7 +21,6 @@ public class Content_Object
         this.name = name;
         Set_Img_ID(img);
         Set_Snd_ID(snd);
-        player = new MediaPlayer();
     }
 
     public String getName() {
@@ -55,15 +53,6 @@ public class Content_Object
 
     public void Play_Sound() throws IOException
     {
-        player = MediaPlayer.create(c, snd_id);
-        player.start();
-
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-
-            @Override
-            public void onCompletion(MediaPlayer player) {
-                player.release();
-            }
-        });
+        SoundManager.play( c, snd_id );
     }
 }

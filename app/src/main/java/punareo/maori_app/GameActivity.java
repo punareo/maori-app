@@ -24,7 +24,7 @@ import java.util.Random;
 
 public class GameActivity extends Activity {
 
-
+    private List<Content_Object> content_object_list;
     private List<ImageButton> button_list;
     private List<Content_Object> answer_list;
 
@@ -33,7 +33,6 @@ public class GameActivity extends Activity {
     private TextView score_display;
     public Content_Object chosen_question;
     private TextView text_header;
-    private List<Content_Object> content_object_list;
 
     TextView question_text;
     ImageButton button_1;
@@ -41,12 +40,13 @@ public class GameActivity extends Activity {
     ImageButton button_3;
     ImageButton button_4;
 
+    String category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
 
-        String category = "";
         if (savedInstanceState == null)
         {
             Bundle extra = getIntent().getExtras();
@@ -134,7 +134,7 @@ public class GameActivity extends Activity {
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
-            content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
+            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, category));
         }
         catch (XmlPullParserException e) { e.printStackTrace(); }
         catch (IOException e) { e.printStackTrace(); }
@@ -162,8 +162,7 @@ public class GameActivity extends Activity {
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
         chosen_question = content_object_list.get( index );
-
-        question_text.setText("Whiriwhiri te "+ chosen_question.getName());
+        question_text.setText("Whiriwhiri te " + category + " "+ chosen_question.getName());
         answer_list.add( chosen_question );
 
         do {

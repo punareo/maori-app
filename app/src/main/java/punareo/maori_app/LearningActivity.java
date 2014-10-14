@@ -69,7 +69,7 @@ public class LearningActivity extends Activity
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
-            content_object_list = new ArrayList<Content_Object>(XML_Parser.Get_Instance().Parse(this, in, category));
+            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, category));
             Change_View(0);
         }
         catch (XmlPullParserException e) { e.printStackTrace(); }

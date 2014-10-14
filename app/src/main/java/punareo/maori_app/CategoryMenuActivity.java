@@ -53,7 +53,7 @@ public class CategoryMenuActivity extends Activity
                 add(new MenuOption("Tau", R.drawable.buttonnumber));
                 add(new MenuOption("Ahua", R.drawable.buttonshape));
                 add(new MenuOption("Wakapu", R.drawable.buttonletter));
-                add(new MenuOption("Ra o te wiki", R.drawable.buttondaysoftheweek));
+                add(new MenuOption("Ra o te Wiki", R.drawable.buttondaysoftheweek));
                 add(new MenuOption("Tae", R.drawable.buttoncolour));
 
         }};

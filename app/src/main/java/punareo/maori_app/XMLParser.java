@@ -17,15 +17,15 @@ import org.xmlpull.v1.XmlPullParserException;
  */
 
 
-public class XML_Parser
+public class XMLParser
 {
-    private static final XML_Parser INSTANCE = new XML_Parser();
+    private static final XMLParser INSTANCE = new XMLParser();
     private ArrayList<Content_Object> content_object_list;
     private static final String ns = null;
 
-    private XML_Parser() {};
+    private XMLParser() {};
 
-    public static XML_Parser Get_Instance()
+    public static XMLParser Get_Instance()
     {
         return INSTANCE;
     }
@@ -97,7 +97,6 @@ public class XML_Parser
         if (parser.next() == XmlPullParser.TEXT)
             result = parser.getText();
         parser.nextTag();
-        System.out.println(result);
         parser.require(XmlPullParser.END_TAG, ns, tag_name);
 
         return result;

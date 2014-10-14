@@ -11,16 +11,14 @@ import android.widget.TextView;
 /**
  * Created by 2002917 on 9/09/2014.
  */
-public class Design_Menu extends Activity {
+public class DesignMenuActivity extends Activity {
 
     private TextView text_header;
     private TextView text_footer;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.design_menu);
-
-        
 
         Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
         text_footer = (TextView)findViewById(R.id.text_view_footer);
@@ -28,38 +26,38 @@ public class Design_Menu extends Activity {
         text_header.setTypeface(typeface);
         text_footer.setTypeface(typeface);
 
-        Button test = (Button) findViewById(R.id.button_design1);
-        Button test2 = (Button) findViewById(R.id.button_design2);
-        Button test3 = (Button) findViewById(R.id.button_design3);
+        Button learning_button = (Button) findViewById(R.id.button_design1);
+        Button games_button = (Button) findViewById(R.id.button_design2);
+        Button story_button = (Button) findViewById(R.id.button_design3);
 
-        test.setTypeface(typeface);
-        test2.setTypeface(typeface);
-        test3.setTypeface(typeface);
+        learning_button.setTypeface(typeface);
+        games_button.setTypeface(typeface);
+        story_button.setTypeface(typeface);
 
-        test.setOnClickListener(new View.OnClickListener() {
+        learning_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), CategoryMenuActivity.class);
+                Intent i = new Intent( getApplicationContext(), CategoryMenuActivity.class );
                 i.putExtra("Layout", R.layout.activity_main_menu_layout_three);
-                i.putExtra( "Activity", "Learning" );
+                i.putExtra("Activity", "Learning");
                 startActivity(i);
             }
         });
 
-        test2.setOnClickListener(new View.OnClickListener() {
+        games_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), CategoryMenuActivity.class);
+                Intent i = new Intent( getApplicationContext(), CategoryMenuActivity.class );
                 i.putExtra("Layout", R.layout.activity_game_main_menu);
-                i.putExtra( "Activity", "Games" );
+                i.putExtra("Activity", "Games");
                 startActivity(i);
             }
         });
 
 
-        test3.setOnClickListener(new View.OnClickListener() {
+        story_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -24,14 +24,14 @@ import java.util.Random;
 
 public class GameActivity extends Activity {
 
-    private List<Content_Object> content_object_list;
+    private List<ContentObject> content_object_list;
     private List<ImageButton> button_list;
-    private List<Content_Object> answer_list;
+    private List<ContentObject> answer_list;
 
     private static int the_score;
     private static int fail_count;
     private TextView score_display;
-    public Content_Object chosen_question;
+    public ContentObject chosen_question;
     private TextView text_header;
 
     TextView question_text;
@@ -47,8 +47,7 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
 
-        if (savedInstanceState == null)
-        {
+        if (savedInstanceState == null) {
             Bundle extra = getIntent().getExtras();
             if (extra == null)
                 category = null;
@@ -70,11 +69,11 @@ public class GameActivity extends Activity {
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Content_Object button_obj = (Content_Object) button_1.getTag();
+                ContentObject button_obj = (ContentObject) button_1.getTag();
                 try {
-                    button_obj.Play_Sound();
+                    button_obj.play_sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
+                if( button_obj.get_image_id() == chosen_question.get_image_id() ) {
                     right_answer();
                 }
                 else
@@ -86,11 +85,11 @@ public class GameActivity extends Activity {
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Content_Object button_obj = (Content_Object) button_2.getTag();
+                ContentObject button_obj = (ContentObject) button_2.getTag();
                 try {
-                    button_obj.Play_Sound();
+                    button_obj.play_sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
+                if( button_obj.get_image_id() == chosen_question.get_image_id() ) {
                     right_answer();
                 }
                 else
@@ -102,11 +101,11 @@ public class GameActivity extends Activity {
         button_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Content_Object button_obj = (Content_Object) button_3.getTag();
+                ContentObject button_obj = (ContentObject) button_3.getTag();
                 try {
-                    button_obj.Play_Sound();
+                    button_obj.play_sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
+                if( button_obj.get_image_id() == chosen_question.get_image_id() ) {
                     right_answer();
                 }
                 else
@@ -117,11 +116,11 @@ public class GameActivity extends Activity {
         button_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Content_Object button_obj = (Content_Object) button_4.getTag();
+                ContentObject button_obj = (ContentObject) button_4.getTag();
                 try {
-                    button_obj.Play_Sound();
+                    button_obj.play_sound();
                 } catch ( IOException e ) { e.printStackTrace(); }
-                if( button_obj.Get_Img_ID() == chosen_question.Get_Img_ID() ) {
+                if( button_obj.get_image_id() == chosen_question.get_image_id() ) {
                     right_answer();
                 }
                 else
@@ -134,7 +133,7 @@ public class GameActivity extends Activity {
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
-            content_object_list = new ArrayList<Content_Object>(XMLParser.Get_Instance().Parse(this, in, category));
+            content_object_list = new ArrayList<ContentObject>(XMLParser.get_instance().parse_xml(this, in, category));
         }
         catch (XmlPullParserException e) { e.printStackTrace(); }
         catch (IOException e) { e.printStackTrace(); }
@@ -157,12 +156,12 @@ public class GameActivity extends Activity {
     }
 
     public void generate_question() {
-        answer_list = new ArrayList<Content_Object>();
+        answer_list = new ArrayList<ContentObject>();
 
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
         chosen_question = content_object_list.get( index );
-        question_text.setText("Whiriwhiri te " + category + " "+ chosen_question.getName());
+        question_text.setText("Whiriwhiri te " + category + " "+ chosen_question.get_my_name());
         answer_list.add( chosen_question );
 
         do {
@@ -179,7 +178,7 @@ public class GameActivity extends Activity {
         Collections.shuffle( answer_list );
 
         for( int i = 0; i <= answer_list.size() - 1; i++ ) {
-            button_list.get( i ).setImageResource(answer_list.get( i ).Get_Img_ID() );
+            button_list.get( i ).setImageResource(answer_list.get( i ).get_image_id() );
             button_list.get( i ).setTag( answer_list.get( i ) );
         }
     }

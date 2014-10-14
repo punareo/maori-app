@@ -17,35 +17,44 @@ import java.util.ArrayList;
 
 class MenuOption
 {
-    private String category;
-    private int id;
+    private String my_category;
+    private int my_id;
 
     public MenuOption(String category, int id)
     {
-        this.category = category;
-        this.id = id;
+        this.my_category = category;
+        this.my_id = id;
     }
 
-    public String Get_Cat() { return category; }
-    public int Get_ID() { return id; }
+    public String get_category() { return my_category; }
+    public int get_id() { return my_id; }
 }
 
 
 public class CategoryMenuActivity extends Activity
 {
-    private TextView textView_header;
-    private TextView textView_footer;
+    private TextView header_textview;
+    private TextView footer_textview;
     String activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle extras = getIntent().getExtras();
-        if( extras != null ) {
-            activity = extras.getString( "Activity" );
-            setContentView( extras.getInt( "Layout" ) );
+        if (savedInstanceState == null) {
+            Bundle extra = getIntent().getExtras();
+            if (extra == null)
+                activity = null;
+            else {
+                activity = extra.getString("Activity");
+                setContentView( extra.getInt( "Layout" ) );
+            }
         }
+        else {
+            activity = (String) savedInstanceState.getSerializable( "Activity" );
+            setContentView( (Integer) savedInstanceState.getSerializable( "Layout" ) );
+        }
+
 
         final ArrayList<MenuOption> menu_options = new ArrayList<MenuOption>()
         {{
@@ -55,11 +64,10 @@ public class CategoryMenuActivity extends Activity
                 add(new MenuOption("Wakapu", R.drawable.buttonletter));
                 add(new MenuOption("Ra o te Wiki", R.drawable.buttondaysoftheweek));
                 add(new MenuOption("Tae", R.drawable.buttoncolour));
-
         }};
 
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
-        gridview.setAdapter(new Image_Adapter(this, menu_options));
+        gridview.setAdapter(new ImageAdapter(this, menu_options));
 
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -74,17 +82,17 @@ public class CategoryMenuActivity extends Activity
                 else if( activity.equals( "Games" ) )
                     i = new Intent(getApplicationContext(), GameActivity.class);
 
-                i.putExtra("Category", menu_options.get(position).Get_Cat());
+                i.putExtra("Category", menu_options.get(position).get_category());
                 startActivity(i);
             }
         });
 
-        textView_footer =(TextView) findViewById(R.id.imageView_main_Footer);
-        textView_header =(TextView) findViewById(R.id.imageView_header_main);
+        footer_textview =(TextView) findViewById(R.id.imageView_main_Footer);
+        header_textview =(TextView) findViewById(R.id.imageView_header_main);
         Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
 
-        textView_header.setTypeface(typeface);
-        textView_footer.setTypeface(typeface);
+        header_textview.setTypeface(typeface);
+        footer_textview.setTypeface(typeface);
     }
 
 

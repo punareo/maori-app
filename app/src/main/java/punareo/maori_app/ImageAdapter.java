@@ -14,14 +14,14 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 
-public class Image_Adapter extends BaseAdapter {
-    private Context mContext;
+public class ImageAdapter extends BaseAdapter {
+    private Context my_context;
     ArrayList<MenuOption> menu_options;
     //Constructor
-    public Image_Adapter(Context c, ArrayList<MenuOption> menu_options)
+    public ImageAdapter(Context context, ArrayList<MenuOption> menu_options)
     {
         this.menu_options = menu_options;
-        mContext = c;
+        my_context = context;
     }
 
     @Override
@@ -30,37 +30,30 @@ public class Image_Adapter extends BaseAdapter {
         return menu_options.size();
     }
     @Override
-    public MenuOption getItem(int position)
+    public MenuOption getItem( int position )
     {
         return menu_options.get(position);
     }
 
-    public long getItemId(int position)
+    public long getItemId( int position )
     {
         return 0;
     }
 
     // create a new ImageView for each item referenced by the Adapter
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        if (convertView == null)
-        {
-            imageView = new ImageView(mContext);
+        if( convertView == null ) {
+            imageView = new ImageView(my_context);
             imageView.setLayoutParams(new GridView.LayoutParams(150,150));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         }
         else
-        {
             imageView = (ImageView) convertView;
-        }
 
-        imageView.setImageResource(getItem(position).Get_ID());
+        imageView.setImageResource( getItem( position ).get_id() );
+
         return imageView;
-
     }
-
-
-
 }

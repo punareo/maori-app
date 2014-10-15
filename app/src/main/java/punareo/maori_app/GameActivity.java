@@ -28,8 +28,8 @@ public class GameActivity extends Activity {
     private List<ImageButton> button_list;
     private List<ContentObject> answer_list;
 
-    private static int the_score;
-    private static int fail_count;
+    private static int questions_asked;
+    private static int correct_answers;
     private TextView score_display;
     public ContentObject chosen_question;
     private TextView text_header;
@@ -151,8 +151,8 @@ public class GameActivity extends Activity {
     }
 
     public void initialize_game() {
-        the_score = 0;
-        fail_count = 0;
+        questions_asked = 1;
+        correct_answers = 0;
     }
 
     public void generate_question() {
@@ -184,14 +184,15 @@ public class GameActivity extends Activity {
     }
 
     public void right_answer() {
-        the_score += 100;
-        score_display.setText("" + the_score);
+        questions_asked++;
+        correct_answers++;
+        score_display.setText( String.valueOf(correct_answers) );
         generate_question();
     }
 
     public void wrong_answer() {
-        fail_count += 1;
-        if( fail_count == 3 )
+        questions_asked++;
+        if( questions_asked >= 10 )
             game_over();
         else
             generate_question();
@@ -200,8 +201,8 @@ public class GameActivity extends Activity {
     public void game_over() {
         score_display.setText("");
         new AlertDialog.Builder(this)
-            .setTitle("Game Over")
-            .setMessage("Your score is " + the_score + ".\nWould you like to play again?")
+            .setTitle( "Game Over" )
+            .setMessage( "Your score is " + correct_answers + "/" + questions_asked + ".\nWould you like to play again?" )
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     initialize_game();

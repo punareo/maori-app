@@ -43,7 +43,8 @@
                 android:layout_height="fill_parent"
                 android:text="@string/Learning"
                 android:background="@drawable/backnewn"
-                style="@style/AppTheme"/>
+                style="@style/AppTheme"
+                android:textColor="#000000"/>
 
             <Button
                 android:id="@+id/button_design2"
@@ -54,6 +55,8 @@
                 android:text="@string/Game"
                 android:background="@drawable/backgroundbigcities"
                 style="@style/AppTheme"
+                android:textColor="#000000"
+
                 />
 
             <Button
@@ -65,6 +68,7 @@
                 android:text="@string/stories"
                 style="@style/AppTheme"
                 android:background="@drawable/backgroundcastle"
+                android:textColor="#000000"
                 />
 
     </LinearLayout>

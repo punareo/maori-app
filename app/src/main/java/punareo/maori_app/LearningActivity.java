@@ -27,6 +27,7 @@ public class LearningActivity extends Activity
                 GestureDetector.OnDoubleTapListener
     {
     private TextView header_textview;
+    private TextView main_textview;
     private TextView footer_textview;
     private GestureDetectorCompat gesture_detector;
     private ImageView image_view;
@@ -54,6 +55,7 @@ public class LearningActivity extends Activity
         else
             category = (String) savedInstanceState.getSerializable("Category");
 
+        main_textview = (TextView) findViewById(R.id.text_view_main);
         image_view = (ImageView) findViewById (R.id.full_image_view );
         header_textview = (TextView) findViewById( R.id.text_view_header_main );
         footer_textview =(TextView) findViewById( R.id.text_view_footer_main );

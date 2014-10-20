@@ -26,13 +26,14 @@ public class DesignMenuActivity extends Activity {
         text_header.setTypeface(typeface);
         text_footer.setTypeface(typeface);
 
+        Typeface new_typeface = Typeface.createFromAsset(getAssets(),"philly.ttf") ;
         Button learning_button = (Button) findViewById(R.id.button_design1);
         Button games_button = (Button) findViewById(R.id.button_design2);
         Button story_button = (Button) findViewById(R.id.button_design3);
 
-        learning_button.setTypeface(typeface);
-        games_button.setTypeface(typeface);
-        story_button.setTypeface(typeface);
+        learning_button.setTypeface(new_typeface);
+        games_button.setTypeface(new_typeface);
+        story_button.setTypeface(new_typeface);
 
         learning_button.setOnClickListener(new View.OnClickListener() {
             @Override

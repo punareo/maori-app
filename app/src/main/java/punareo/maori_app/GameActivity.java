@@ -28,6 +28,7 @@ public class GameActivity extends Activity {
 
     private static int questions_asked;
     private static int correct_answers;
+
     private TextView score_display;
     public ContentObject chosen_question;
     private TextView text_header;
@@ -55,12 +56,12 @@ public class GameActivity extends Activity {
         else
             category = (String) savedInstanceState.getSerializable("Category");
 
-        Typeface typeface =Typeface.createFromAsset(getAssets(),"chalktext.ttf");
+      //  Typeface typeface =Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
 
         text_header = (TextView) findViewById(R.id.text_view_header);
         score_display = (TextView) findViewById(R.id.text_view_score);
-        score_display.setTypeface(typeface);
-        text_header.setTypeface(typeface);
+       // score_display.setTypeface(typeface);
+       // text_header.setTypeface(typeface);
 
 
         button_1 = (ImageButton) findViewById(R.id.image_button_NW);
@@ -127,7 +128,7 @@ public class GameActivity extends Activity {
         });
 
         question_text = (TextView) findViewById(R.id.text_view_question);
-        question_text.setTypeface(typeface);
+       // question_text.setTypeface(typeface);
 
         try {
             InputStream in = getResources().openRawResource(R.raw.learningslides);
@@ -179,18 +180,20 @@ public class GameActivity extends Activity {
             button_list.get( i ).setImageResource(answer_list.get( i ).get_image_id() );
             button_list.get( i ).setTag( answer_list.get( i ) );
         }
+        questions_asked++;
+        score_display.setText( String.valueOf(correct_answers) );
     }
 
     public void right_answer() {
-        questions_asked++;
         correct_answers++;
-        score_display.setText( String.valueOf(correct_answers) );
-        generate_question();
+        if( questions_asked > 10 )
+            game_over();
+        else
+            generate_question();
     }
 
     public void wrong_answer() {
-        questions_asked++;
-        if( questions_asked >= 10 )
+        if( questions_asked > 10 )
             game_over();
         else
             generate_question();
@@ -199,15 +202,15 @@ public class GameActivity extends Activity {
     public void game_over() {
         score_display.setText("");
         new AlertDialog.Builder(this)
-            .setTitle( "Game Over" )
-            .setMessage( "Your score is " + correct_answers + "/" + questions_asked + ".\nWould you like to play again?" )
-            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            .setTitle( "Wā mutunga" )
+            .setMessage( "Tou hua ko te " + correct_answers + "/" + questions_asked + ".\nE hiahia ana koe ki te takaro anō?" )
+            .setPositiveButton("Āe", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     initialize_game();
                     generate_question();
                 }
             })
-            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            .setNegativeButton("Kāore", new DialogInterface.OnClickListener() {
                 public void onClick( DialogInterface dialog, int which) {
                     finish();
                 }

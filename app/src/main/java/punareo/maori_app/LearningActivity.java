@@ -60,10 +60,10 @@ public class LearningActivity extends Activity
         header_textview = (TextView) findViewById( R.id.text_view_header_main );
         footer_textview =(TextView) findViewById( R.id.text_view_footer_main );
 
-        Typeface typeface =Typeface.createFromAsset(getAssets(),"testtext.TTF");
+       // Typeface typeface =Typeface.createFromAsset(getAssets(),"font/testtext.ttf");
 
-        header_textview.setTypeface( typeface );
-        footer_textview.setTypeface( typeface );
+      //  header_textview.setTypeface( typeface );
+     //   footer_textview.setTypeface( typeface );
 
         try {
             InputStream i_stream = getResources().openRawResource( R.raw.learningslides );

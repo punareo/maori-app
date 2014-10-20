@@ -20,20 +20,20 @@ public class DesignMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.design_menu);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"testtext.TTF");
+       // Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
         text_footer = (TextView)findViewById(R.id.text_view_footer);
         text_header = (TextView) findViewById(R.id.text_view_header);
-        text_header.setTypeface(typeface);
-        text_footer.setTypeface(typeface);
+       // text_header.setTypeface(typeface);
+       // text_footer.setTypeface(typeface);
 
-        Typeface new_typeface = Typeface.createFromAsset(getAssets(),"philly.ttf") ;
+       // Typeface new_typeface = Typeface.createFromAsset(getAssets(),"philly.ttf") ;
         Button learning_button = (Button) findViewById(R.id.button_design1);
         Button games_button = (Button) findViewById(R.id.button_design2);
         Button story_button = (Button) findViewById(R.id.button_design3);
 
-        learning_button.setTypeface(new_typeface);
-        games_button.setTypeface(new_typeface);
-        story_button.setTypeface(new_typeface);
+       // learning_button.setTypeface(new_typeface);
+      //  games_button.setTypeface(new_typeface);
+      //  story_button.setTypeface(new_typeface);
 
         learning_button.setOnClickListener(new View.OnClickListener() {
             @Override

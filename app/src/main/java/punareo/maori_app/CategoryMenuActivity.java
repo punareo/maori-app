@@ -89,10 +89,10 @@ public class CategoryMenuActivity extends Activity
 
         footer_textview =(TextView) findViewById(R.id.imageView_main_Footer);
         header_textview =(TextView) findViewById(R.id.imageView_header_main);
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"testtext.TTF");
+//        Typeface typeface = Typeface.createFromAsset(getAssets(),"testtext.TTF");
 
-        header_textview.setTypeface(typeface);
-        footer_textview.setTypeface(typeface);
+       // header_textview.setTypeface(typeface);
+       // footer_textview.setTypeface(typeface);
     }
 
 

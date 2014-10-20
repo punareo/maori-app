@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">PUNA REO</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -12,4 +11,5 @@
     <string name="Learning">Learning</string>
     <string name="Game">Game</string>
     <string name="stories">Story</string>
+    <string name="score">0</string>
 </resources>

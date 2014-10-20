@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@drawable/backgroundbigcities"
+    android:background="@drawable/backgroundblackboard"
     tools:context=".MyActivity">
 
 
@@ -18,8 +18,6 @@
         android:id="@+id/gridLayout"
         android:layout_centerInParent="true"
         android:alignmentMode="alignBounds"
-        android:background="@drawable/backgroundblackboard"
-
         >
 
         <ImageButton
@@ -31,13 +29,12 @@
             android:layout_row="0"
             android:background="@null"
             android:scaleType="fitStart"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
 
             />
 
         <Space
-            android:layout_width="80dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_column="1"
             android:layout_row="1"/>
@@ -81,6 +78,7 @@
         android:layout_height="wrap_content"
         android:rowCount="2"
         android:columnCount="1"
+        android:layout_marginTop="40dp"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/gridLayout"
         android:layout_centerHorizontal="true"
@@ -92,7 +90,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/app_name"
+            android:textColor="#ffffffff"
             android:textSize="40sp"
+            android:textStyle="bold"
             android:layout_row="0"
             />
 
@@ -103,7 +103,9 @@
             android:gravity="center"
             android:text="@string/test_question"
             android:textSize="40sp"
+            android:textColor="#ffffffff"
             android:layout_row="1"
+            android:textStyle="bold"
             android:layout_marginTop="50dp"
             />
 
@@ -114,6 +116,8 @@
      android:layout_height="wrap_content"
      android:layout_alignParentRight="true"
      android:textSize="50sp"
+     android:textStyle="bold"
+     android:textColor="#ffffffff"
      android:text="0"/>
 
 

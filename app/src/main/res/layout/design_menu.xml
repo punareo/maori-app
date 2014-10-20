@@ -12,7 +12,9 @@
         android:text="@string/app_name"
         android:textAllCaps="true"
         android:textSize="60sp"
+        android:textColor="#ffffff"
         android:gravity="center"
+        android:background="#000000"
        />
     <TextView
         android:id="@+id/text_view_footer"
@@ -23,6 +25,8 @@
         android:textAllCaps="true"
         android:textSize="60sp"
         android:gravity="center"
+        android:textColor="#ffffff"
+        android:background="#000000"
         />
 
     <LinearLayout
@@ -35,7 +39,7 @@
                 android:id="@+id/button_design1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:layout_height="fill_parent"
                 android:text="@string/Learning"
                 android:background="@drawable/backnewn"
@@ -45,7 +49,7 @@
                 android:id="@+id/button_design2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:layout_height="fill_parent"
                 android:text="@string/Game"
                 android:background="@drawable/backgroundbigcities"
@@ -56,7 +60,7 @@
                 android:id="@+id/button_design3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:layout_height="fill_parent"
                 android:text="@string/stories"
                 style="@style/AppTheme"

@@ -20,7 +20,7 @@ public class DesignMenuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.design_menu);
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"testtext.TTF");
         text_footer = (TextView)findViewById(R.id.text_view_footer);
         text_header = (TextView) findViewById(R.id.text_view_header);
         text_header.setTypeface(typeface);

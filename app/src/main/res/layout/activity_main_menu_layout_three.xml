@@ -14,12 +14,9 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textAllCaps="true"
-
         />
 
-
     <!-- GridView(gridview_main)to display category images -->
-
 
     <GridView
         android:id="@+id/gridview_main"

@@ -5,8 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -57,7 +55,7 @@ public class GameActivity extends Activity {
         else
             category = (String) savedInstanceState.getSerializable("Category");
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+        Typeface typeface =Typeface.createFromAsset(getAssets(),"chalktext.ttf");
 
         text_header = (TextView) findViewById(R.id.text_view_header);
         score_display = (TextView) findViewById(R.id.text_view_score);
@@ -223,22 +221,5 @@ public class GameActivity extends Activity {
         return rand.nextInt( ( max - min) + 1) + min;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.game, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

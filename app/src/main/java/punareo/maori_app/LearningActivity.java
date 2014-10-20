@@ -58,7 +58,7 @@ public class LearningActivity extends Activity
         header_textview = (TextView) findViewById( R.id.text_view_header_main );
         footer_textview =(TextView) findViewById( R.id.text_view_footer_main );
 
-        Typeface typeface = Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
+        Typeface typeface =Typeface.createFromAsset(getAssets(),"testtext.TTF");
 
         header_textview.setTypeface( typeface );
         footer_textview.setTypeface( typeface );

@@ -40,6 +40,7 @@ public class GameActivity extends Activity {
     ImageButton button_4;
 
     String category;
+    String question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,19 @@ public class GameActivity extends Activity {
         }
         else
             category = (String) savedInstanceState.getSerializable("Category");
+
+        System.out.println( category );
+        question = "";
+        if( category.equals("Wakapu") )
+            question = "Choose the thing that begins with the letter ";
+        else if( category.equals("Tau") || category.equals("Tae") )
+            question = "Choose the " + category + " ";
+        else if( category.equals("Kararehe")|| category.equals("Ahua") )
+            question = "Choose the ";
+        else if( category.equals("Ra o te Wiki") )
+            question = "Choose the day ";
+
+        System.out.println( question );
 
       //  Typeface typeface =Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
 
@@ -160,7 +174,7 @@ public class GameActivity extends Activity {
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
         chosen_question = content_object_list.get( index );
-        question_text.setText("Whiriwhiri te " + category + " "+ chosen_question.get_my_name());
+        question_text.setText(question + chosen_question.get_my_name());
         answer_list.add( chosen_question );
 
         do {

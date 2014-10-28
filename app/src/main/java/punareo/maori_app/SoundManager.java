@@ -5,6 +5,8 @@ import android.media.MediaPlayer;
 
 /**
  * Created by 21002282 on 14/10/2014.
+ * A static MediaPlayer class that can take a sound file resource id and play it
+ * Stops the current playing sound if a new is started
  */
 public class SoundManager {
     private static MediaPlayer mp = null;
@@ -17,8 +19,7 @@ public class SoundManager {
         mp.start();
     }
     public static void stop(Context context) {
-        if (mp != null)
-        {
+        if (mp != null) {
             mp.stop();
             mp.release();
             mp = null;

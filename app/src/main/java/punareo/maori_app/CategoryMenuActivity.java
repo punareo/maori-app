@@ -79,9 +79,9 @@ public class CategoryMenuActivity extends Activity
 
                 if( activity.equals( "Learning" ) )
                     i = new Intent(getApplicationContext(), LearningActivity.class);
-                else if( activity.equals( "Games" ) )
+                else if( activity.equals( "Games" ) ) {
                     i = new Intent(getApplicationContext(), GameActivity.class);
-
+                }
                 i.putExtra("Category", menu_options.get(position).get_category());
                 startActivity(i);
             }

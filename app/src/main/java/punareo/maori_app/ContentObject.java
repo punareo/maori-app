@@ -6,6 +6,8 @@ import java.io.IOException;
 
 /**
  * Created by 21002282 on 28/08/2014.
+ * This class is used to store information referencing the file path of images and sound files *
+ * These represent the different objects portrayed in the games
  */
 public class ContentObject {
     private String my_name;
@@ -29,6 +31,7 @@ public class ContentObject {
     }
 
     public void set_image_id( String image ) {
+        //Assigns the resource id to my_image_id of the sound file whose name matches 'image'
         my_image_id = my_context.getResources().getIdentifier( image, null, my_context.getPackageName() );
     }
 
@@ -37,9 +40,11 @@ public class ContentObject {
     }
 
     public void set_sound_id( String sound_id ) {
+        //Assigns the resource id to my_sound_id of the sound file whose name matches 'sound_id'
         my_sound_id = my_context.getResources().getIdentifier(sound_id, null, my_context.getPackageName());
     }
 
+    //Calls the SoundManager class' function 'play' with the object's my_sound_id resource as the argument
     public void play_sound() throws IOException
     {
         SoundManager.play(my_context, my_sound_id);

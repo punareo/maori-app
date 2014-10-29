@@ -2,7 +2,6 @@ package punareo.maori_app;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +36,7 @@ public class MainMenuActivity extends Activity {
        // Typeface new_typeface = Typeface.createFromAsset(getAssets(),"philly.ttf") ;
         learning_button = (Button) findViewById(R.id.button_design1);
         games_button = (Button) findViewById(R.id.button_design2);
-        Button story_button = (Button) findViewById(R.id.button_design3);
+
 
        // learning_button.setTypeface(new_typeface);
       //  games_button.setTypeface(new_typeface);
@@ -63,17 +62,6 @@ public class MainMenuActivity extends Activity {
                 Intent i = new Intent( getApplicationContext(), CategoryMenuActivity.class );
                 i.putExtra("Layout", R.layout.activity_game_main_menu);
                 i.putExtra("Activity", "Games");
-                startActivity(i);
-            }
-        });
-
-
-        story_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), CategoryMenuActivity.class);
-                i.putExtra("Layout", R.layout.activity_main_menu_layout_three);
                 startActivity(i);
             }
         });

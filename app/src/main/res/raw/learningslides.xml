@@ -119,7 +119,7 @@
             <soundpath type="text">raw/iwa</soundpath>
         </object>
         <object name="Ten">
-            <name type="text">Ngahuru</name>
+            <name type="text">Tekau</name>
             <imgpath type="text">drawable/ten</imgpath>
             <soundpath type="text">raw/ngahuru</soundpath>
         </object>
@@ -199,7 +199,7 @@
         </object>
         <object name="I">
             <name type="text">I i</name>
-            <imgpath type="text">drawable/eight</imgpath>
+            <imgpath type="text">drawable/nine</imgpath>
             <soundpath type="text">raw/i_iwa</soundpath>
         </object>
         <object name="K">

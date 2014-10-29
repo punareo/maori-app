@@ -44,7 +44,7 @@ public class MainMenuActivity extends Activity {
       //  story_button.setTypeface(new_typeface);
 
         //Use the OnClickListener event to call the Category Menu Activity
-        //the intent extra "Activity" informs the Category Menu which Activity to launch when selected a category
+        //The intent extra "Activity" informs the Category Menu which Activity to launch when selected a category
         learning_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

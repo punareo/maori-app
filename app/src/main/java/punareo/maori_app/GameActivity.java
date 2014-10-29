@@ -19,7 +19,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
+/*A class that controls the game section of the application
+*Calls the XMLParser to populate a list of ContentObjects
+*Randomly generates question from that list
+*Tracks correct answers and after 10 question displays the accuracy of the user
+*/
 public class GameActivity extends Activity {
 
     private List<ContentObject> content_object_list;
@@ -29,6 +33,7 @@ public class GameActivity extends Activity {
     private static int questions_asked;
     private static int correct_answers;
 
+    //Declaring controls
     private TextView score_display;
     public ContentObject chosen_question;
     private TextView text_header;
@@ -40,13 +45,13 @@ public class GameActivity extends Activity {
     ImageButton button_4;
 
     String category;
-    String question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
 
+        //Retrieving the String value of 'Category' from the previous Activity
         if (savedInstanceState == null) {
             Bundle extra = getIntent().getExtras();
             if (extra == null)
@@ -56,19 +61,6 @@ public class GameActivity extends Activity {
         }
         else
             category = (String) savedInstanceState.getSerializable("Category");
-
-        System.out.println( category );
-        question = "";
-        if( category.equals("Wakapu") )
-            question = "Choose the thing that begins with the letter ";
-        else if( category.equals("Tau") || category.equals("Tae") )
-            question = "Choose the " + category + " ";
-        else if( category.equals("Kararehe")|| category.equals("Ahua") )
-            question = "Choose the ";
-        else if( category.equals("Ra o te Wiki") )
-            question = "Choose the day ";
-
-        System.out.println( question );
 
       //  Typeface typeface =Typeface.createFromAsset(getAssets(),"fonts/testtext.ttf");
 
@@ -174,7 +166,44 @@ public class GameActivity extends Activity {
         int index = rand_num_in_range(0, content_object_list.size() - 1 );
 
         chosen_question = content_object_list.get( index );
-        question_text.setText(question + chosen_question.get_my_name());
+
+        if( category.equals("Arapū") )
+            question_text.setText( "Whiria te mea i tīmata ki te pū "  + chosen_question.get_my_name());
+        else if( category.equals("Tau") || category.equals("Tae") )
+            question_text.setText( "Whiria te " + category.toLowerCase() + " " + chosen_question.get_my_name().toLowerCase() + "?");
+        else if( category.equals("Kararehe")|| category.equals("Ahua") )
+            question_text.setText( "Whiria te " + chosen_question.get_my_name().toLowerCase() + "?" );
+        else if( category.equals("Ra o te Wiki") ) {
+            String ordinal_number = "";
+            switch( content_object_list.indexOf( chosen_question ) ) {
+                case 0 :
+                    ordinal_number = "tuatahi";
+                    break;
+                case 1 :
+                    ordinal_number = "tuarua";
+                    break;
+                case 2 :
+                    ordinal_number = "tuatoru";
+                    break;
+                case 3 :
+                    ordinal_number = "tuawhā";
+                    break;
+                case 4 :
+                    ordinal_number = "tuarima";
+                    break;
+                case 5 :
+                    ordinal_number = "tuaono";
+                    break;
+                case 6 :
+                    ordinal_number = "tuawhitu";
+                    break;
+                default :
+                    break;
+            }
+            question_text.setText( " Whiria te rā " + ordinal_number + " o te Wiki?" );
+        }
+
+
         answer_list.add( chosen_question );
 
         do {
@@ -216,8 +245,8 @@ public class GameActivity extends Activity {
     public void game_over() {
         score_display.setText("");
         new AlertDialog.Builder(this)
-            .setTitle( "Wā mutunga" )
-            .setMessage( "Tou hua ko te " + correct_answers + "/" + questions_asked + ".\nE hiahia ana koe ki te takaro anō?" )
+            .setTitle( "Kua mutu" )
+            .setMessage( "Ko āu māka " + correct_answers + " I te " + questions_asked + ".\nMe mai anō koe?" )
             .setPositiveButton("Āe", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     initialize_game();

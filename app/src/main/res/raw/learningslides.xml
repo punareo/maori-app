@@ -181,7 +181,7 @@
             <soundpath type="text">raw/karaka</soundpath>
         </object>
     </category>
-    <category name="Wakapu">
+    <category name="Arupū">
         <object name="A">
             <name type="text">A a</name>
             <imgpath type="text">drawable/elephant</imgpath>

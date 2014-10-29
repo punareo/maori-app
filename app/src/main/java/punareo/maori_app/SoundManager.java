@@ -11,6 +11,9 @@ import android.media.MediaPlayer;
 public class SoundManager {
     private static MediaPlayer mp = null;
 
+    //A function that plays a sound one per call
+    //@param Context context represents the context of the Activity calling the function
+    //@param int resource represents an Android resource ID which points to a file in the Resources directory
     public static void play(Context context, int resource) {
         stop(context);
 
@@ -18,6 +21,9 @@ public class SoundManager {
         mp.setLooping(false);
         mp.start();
     }
+
+    //A function that stops sounds that are currently playing
+    //@param Context context represents the context of the Activity calling the function
     public static void stop(Context context) {
         if (mp != null) {
             mp.stop();

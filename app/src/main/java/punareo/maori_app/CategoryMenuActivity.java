@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 //Menu 3 with full image 1 - no exit button
 
+//Minimal class designed to attach the name of a category to an image
 class MenuOption
 {
     private String my_category;
@@ -30,9 +31,10 @@ class MenuOption
     public int get_id() { return my_id; }
 }
 
-
+//This class is designed to allow users to select which category they wish to learn about
 public class CategoryMenuActivity extends Activity
 {
+    //Declaring controls
     private TextView header_textview;
     private TextView footer_textview;
     String activity;
@@ -41,6 +43,7 @@ public class CategoryMenuActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //
         if (savedInstanceState == null) {
             Bundle extra = getIntent().getExtras();
             if (extra == null)
@@ -55,7 +58,7 @@ public class CategoryMenuActivity extends Activity
             setContentView( (Integer) savedInstanceState.getSerializable( "Layout" ) );
         }
 
-
+        //Populate an array list with Menu Options for each of the categories with the name, and icon image
         final ArrayList<MenuOption> menu_options = new ArrayList<MenuOption>()
         {{
                 add(new MenuOption("Kararehe", R.drawable.buttonanimal));
@@ -66,10 +69,12 @@ public class CategoryMenuActivity extends Activity
                 add(new MenuOption("Tae", R.drawable.buttoncolour));
         }};
 
+        //Declare and initialize a grid view with an option for each Menu Option in the array list
         GridView gridview = (GridView) findViewById(R.id.gridview_main);
         gridview.setAdapter(new ImageAdapter(this, menu_options));
 
-
+        //Launch the appropriate Activity based on the value of Activity string
+        //Add the category string to the intent and pass it to the Activity
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override

@@ -14,6 +14,9 @@ import org.xmlpull.v1.XmlPullParserException;
 
 /**
  * Created by 21002282 on 25/08/2014.
+ * A class that parses an XML document containing information and references to the objects to be used by the application
+ * Uses a string passed to it to filter which data should be stored and which should be ignored
+ * This ensures specific categories of object (Animals, Numbers, Shapes etc) are used in each Learning or Game session
  */
 
 
@@ -25,14 +28,22 @@ public class XMLParser
 
     private XMLParser() {};
 
+    //The XMLParser is a static class. This method returns the parser without requiring instantiation outside of the class
     public static XMLParser get_instance()
     {
         return INSTANCE;
     }
 
+    //Initializes an XMLPullParser and starts the process of reading the XML file line by line
+    //@param Context c represents the context of the Activity calling the parser
+    //@param Inputstream in represents the XML file to be read by the parser
+    //@param String category represents the value of a <category> tag in the XML file
+    //This is used to filter which XML <object> tags should be stored into ContentObjects
     public List<ContentObject> parse_xml( Context c, InputStream in, String category ) throws XmlPullParserException, IOException, SAXException {
         try {
             content_object_list = new ArrayList<ContentObject>();
+
+            //Initializing the XMLPullParser
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
@@ -63,6 +74,9 @@ public class XMLParser
         return content_object_list.size();
     }
 
+    //A function to parse the tags inside an <object> tag and call the read_text function when it reaches any of the inner data tags
+    //@param Context context represents the context passed from the parse_xml function, representing the context of the activity calling the XMLParser
+    //@XMLPullparser parser represents the XMLPullParser being used by the class
     private ContentObject read_object( Context context, XmlPullParser parser ) throws XmlPullParserException, IOException, SAXException {
         try {
             String name = "", img = "", snd = "";
@@ -82,6 +96,9 @@ public class XMLParser
         } finally {}
     }
 
+    //A function to read string data stored inside data tags within an <object> tag
+    //@param XMLPullParser parser represents the parser being used by the class
+    //@param String tag_name represents the name of the tag inside an <object> tag so the parser knows where the data tag begins and ends
     private String read_text( XmlPullParser parser, String tag_name ) throws XmlPullParserException, IOException, SAXException {
         String result = "";
         parser.require( XmlPullParser.START_TAG, ns, tag_name );
@@ -94,6 +111,8 @@ public class XMLParser
         return result;
     }
 
+    //A function to skip over unwanted tags and resume after the skipped tag is closed
+    //@param XMLPullParser parser represents the parser being used by the class
     private void Skip( XmlPullParser parser ) throws XmlPullParserException, IOException {
         if( parser.getEventType() != XmlPullParser.START_TAG )
             throw new IllegalStateException();

@@ -31,7 +31,6 @@ public class LearningActivity extends Activity
                 GestureDetector.OnDoubleTapListener
     {
     //Declaring controls used by the Activity
-
     private TextView header_textview;
     private TextView main_textview;
     private TextView footer_textview;
@@ -107,7 +106,8 @@ public class LearningActivity extends Activity
         });
     }
 
-    //This function changes the index that tracks the active object in the content_object_list
+    //A function that changes the index that tracks the active object in the content_object_list
+    //@param int increment represents the change in value of the index
     //When the index reaches 0 or the max size, it sets the index to the other extreme: 0 - 1 = max. max + 1 = 0
     //Displays the name, the picture and plays the sound of the object at the index value of 'index' of the content_object_list
     public void change_view( int increment ) {
